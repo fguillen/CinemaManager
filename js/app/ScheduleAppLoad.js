@@ -1,4 +1,6 @@
 $(function(){
+  drawRulers();
+
   scheduleCards = new ScheduleApp.ScheduleCards( data1.schedule_cards );
 
   scheduleCardsView =

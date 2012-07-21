@@ -6,6 +6,7 @@
 
   <script type="text/javascript" src="./js/libs/jquery.js"></script>
   <script type="text/javascript" src="./js/libs/jquery-ui.js"></script>
+  <script type="text/javascript" src="./js/libs/sprintf.js"></script>
 
   <script type="text/javascript" src="./js/libs/underscore.js"></script>
   <script type="text/javascript" src="./js/libs/backbone.js"></script>
@@ -60,26 +61,6 @@
     <div id="panel">
       <div id="ruler-left" class="ruler">
         <ul class="time-ruler">
-          <li class="visible"><span>17:00</span></li>
-          <li><span>17:10</span></li>
-          <li><span>17:20</span></li>
-          <li><span>17:30</span></li>
-          <li><span>17:40</span></li>
-          <li><span>17:50</span></li>
-
-          <li class="visible"><span>18:00</span></li>
-          <li><span>18:10</span></li>
-          <li><span>18:20</span></li>
-          <li><span>18:30</span></li>
-          <li><span>18:40</span></li>
-          <li><span>18:50</span></li>
-
-          <li class="visible"><span>19:00</span></li>
-          <li><span>19:10</span></li>
-          <li><span>19:20</span></li>
-          <li><span>19:30</span></li>
-          <li><span>19:40</span></li>
-          <li><span>19:50</span></li>
         </ul>
       </div>
 
@@ -92,46 +73,13 @@
           <div class="schedule-rail">
             <div class="schedule-grid">
               <ul>
-                <li data-room="1" data-time="17:00"></li>
-                <li data-room="1" data-time="17:10"></li>
-                <li data-room="1" data-time="17:20"></li>
-                <li data-room="1" data-time="17:30"></li>
-                <li data-room="1" data-time="17:40"></li>
-                <li data-room="1" data-time="17:50"></li>
               </ul>
-            </div>
-
-            <div class="card box" id="card-1">
-              <div class="times">
-                <div class="time time-ini">17:10</div>
-                <div class="time time-end">19:20</div>
-              </div>
-
-              <h2 class="title-2">No es país para viejos</h2>
-            </div>
-
-            <div class="card box" id="card-2">
-              <div class="times">
-                <div class="time time-ini">17:10</div>
-                <div class="time time-end">19:20</div>
-              </div>
-
-              <h2 class="title-2">No es país para viejos</h2>
-            </div>
-
-            <div class="card box" id="card-3">
-              <div class="times">
-                <div class="time time-ini">17:10</div>
-                <div class="time time-end">19:20</div>
-              </div>
-
-              <h2 class="title-2">No es país para viejos</h2>
             </div>
 
           </div>
         </div>
 
-        <div class="schedule" id="schedule-room-1">
+        <div class="schedule" id="schedule-room-2">
           <h1 class="title-1">
             Room 2
           </h1>
@@ -139,23 +87,21 @@
           <div class="schedule-rail">
             <div class="schedule-grid">
               <ul>
-                <li data-room="2" data-time="17:00"></li>
-                <li data-room="2" data-time="17:10"></li>
-                <li data-room="2" data-time="17:20"></li>
-                <li data-room="2" data-time="17:30"></li>
-                <li data-room="2" data-time="17:40"></li>
-                <li data-room="2" data-time="17:50"></li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="schedule" id="schedule-room-1">
+        <div class="schedule" id="schedule-room-3">
           <h1 class="title-1">
             Room 3
           </h1>
 
           <div class="schedule-rail">
+            <div class="schedule-grid">
+              <ul>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -166,71 +112,49 @@
   </div>
 
 <script>
-  $(function() {
 
-    function revertConfiguration( droppableObj ){
-      if( droppableObj === false ) {
-        console.log( "reverted" );
-        return true;
-      } else {
-        console.log( "droppen on", droppableObj );
-        return false;
-      }
+  function drawRulers(){
+    var dateIni = "17:00";
+    var dateEnd = "03:00";
+    var dateActual = dateIni;
+
+    while( dateActual >= dateIni || dateActual <= dateEnd ){
+      var dateObj = new Date( Date.parse( "2012-07-20 " + dateActual,"MM/dd/yyyy HH:MM" ) );
+
+      // Ruler li
+      var newRulerLi = $("<li><span>" + dateActual + "</span></li>")
+      if( dateObj.getMinutes() == 0 ) newRulerLi.addClass( "visible" );
+      $("ul.time-ruler").append( newRulerLi );
+
+      // Grid elements
+      var newGridElement = $( "<li data-time=\"" + dateActual + "\"></li>" );
+      $(".schedule-grid ul").append( newGridElement );
+
+
+      var newDateObj  = new Date( dateObj.getTime() + 10 * 60000 );
+      dateActual      = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
     }
+  }
 
-    $( ".card" ).draggable({
-      snap: ".schedule-grid li",
-      snapMode: "outter",
-      zIndex: 1000,
-      opacity: 0.75,
 
-      collision: true,
 
-      revert: revertConfiguration,
 
-      stop: function(event, ui) {
-        console.log( "---stop----" );
-        console.log( "this", this );
-        console.log( "event", event );
-        console.log( "ui", ui );
-        $(this).draggable( 'option', 'revert', revertConfiguration );
-      }
-    });
-
+  $(function() {
 
     $('.card').droppable({
       greedy: true,
       tolerance: 'touch',
       drop: function(event,ui){
-        // console.log( "this", this );
         $(this).effect("highlight", {}, 1000);
-        //.css( "backgroundColor": "red" );
-        ui.draggable.draggable('option','revert',true);
+        ui.draggable.draggable( "option", "revert", true );
       }
     });
 
     $('.schedule-grid li').droppable({
-      tolerance: 'fit',
-      drop: function(event, ui) {
-        console.log( "---drop----" );
-        console.log( "this", this );
-        console.log( "event", event );
-        console.log( "ui", ui );
-      }
+      tolerance: 'fit'
     });
 
-
-    // $("#card-actual").draggable();
-    // $(".schedule-rail").droppable({
-    //   over: function(event, ui) {
-    //     $("#card-actual").draggable({ grid: [20, 50] });
-    //   },
-    //   out: function(event, ui) {
-    //     $("#card-actual").draggable("option", "grid", false);
-    //   }
-    // });
   });
-
 
 </script>
 

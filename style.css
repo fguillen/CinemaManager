@@ -87,6 +87,7 @@ body {
   height: 130px;
   padding: 10px;
   position: absolute;
+  overflow: hidden;
 }
 
 .card-actived {
@@ -121,11 +122,10 @@ body {
 }
 
 .ruler li {
-  height: 14px;
+  height: 17px;
   margin-bottom: -7px;
 
   background-image: url( "./ruler.png" );
-  background-position: right -13px;
   background-repeat: no-repeat;
 }
 
@@ -135,6 +135,10 @@ body {
 
 .ruler li.visible span {
   display: block;
+}
+
+.ruler li {
+  background-position: right -13px;
 }
 
 .ruler li:nth-child(6n+1) {
@@ -162,7 +166,7 @@ body {
   /*height: 1px;
   margin-bottom: 6px;*/
   height: 2000px;
-  margin-bottom: -1995px;
-  border: 1px solid #94D7F1;
-  width: 98px;
+  margin-bottom: -1991px;
+  border-top: 1px solid #94D7F1;
+  width: 100px;
 }
