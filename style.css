@@ -86,7 +86,7 @@ body {
   width: 100px;
   height: 130px;
   padding: 10px;
-  position: absolute;
+  /*position: absolute;*/
   overflow: hidden;
 }
 
