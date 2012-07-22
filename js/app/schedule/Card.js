@@ -1,5 +1,5 @@
 $(function(){
-  ScheduleApp.ScheduleCard = Backbone.Model.extend({
+  Schedule.Card = Backbone.Model.extend({
     initialize: function(){
     }
   });

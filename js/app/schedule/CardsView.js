@@ -1,5 +1,5 @@
 $(function(){
-  ScheduleApp.ScheduleCardsView = Backbone.View.extend({
+  Schedule.CardsView = Backbone.View.extend({
     el: "#wrapper",
 
     initialize: function(opts){
@@ -10,7 +10,7 @@ $(function(){
     },
 
     addOne: function( model ){
-      var view = new ScheduleApp.ScheduleCardView({ model: model });
+      var view = new Schedule.CardView({ model: model });
       this.$el.append( view.render().el );
     },
 
