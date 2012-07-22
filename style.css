@@ -19,6 +19,22 @@ body {
   margin: 0 auto;
 }
 
+#search-box {
+  width: 190px;
+  float: left;
+}
+
+#search-box .results {
+  padding: 10px;
+  overflow: hidden;
+}
+
+#search-box .results li {
+  /*border: 1px solid red;*/
+  margin-bottom: 10px;
+}
+
+
 #toolbar {
   width: 170px;
   float: left;
@@ -48,7 +64,6 @@ body {
 
 .schedule .schedule-rail{
   /*position: relative;*/
-  border: 2px solid #94D7F1;
   padding: 2px;
   height: 650px;
 }
@@ -64,6 +79,10 @@ body {
   color: #007194;
 }
 
+.framed-box {
+  border: 2px solid #94D7F1;
+}
+
 .input-box {
   width: 50px;
   text-align: right;
@@ -73,6 +92,11 @@ body {
   color: #007194;
   padding: 3px;
   border: 0;
+}
+
+.input-box.big {
+  text-align: left;
+  width: 168px;
 }
 
 .title-1 {
@@ -90,7 +114,7 @@ body {
   overflow: hidden;
 }
 
-.card-actived {
+.card.selected {
   background-color: #007194;
   color: white;
 }

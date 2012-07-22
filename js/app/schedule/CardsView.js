@@ -1,8 +1,6 @@
 $(function(){
   Schedule.CardsView = Backbone.View.extend({
-    el: "#wrapper",
-
-    initialize: function(opts){
+    initialize: function( opts ){
       this.collection.on( 'reset', this.addAll, this );
       this.collection.on( 'add', this.addOne, this );
 
@@ -18,10 +16,7 @@ $(function(){
       this.collection.each( $.proxy( this.addOne, this ) );
     },
 
-    unlink: function(){
-      this.collection.off( null, null, this );
-      this.remove();
-    }
+
 
   });
 });

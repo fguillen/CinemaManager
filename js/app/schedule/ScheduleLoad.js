@@ -8,4 +8,12 @@ $(function(){
       el:           "#schedules",
       collection:   Schedule.scheduleCards
     });
+
+  Schedule.toolbar =
+    new Schedule.ToolbarView({
+      el:           "#toolbar",
+      collection:   Schedule.scheduleCards
+    });
+
+
 });

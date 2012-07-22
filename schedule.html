@@ -21,6 +21,8 @@
   <script type="text/javascript" src="./js/app/schedule/Cards.js"></script>
   <script type="text/javascript" src="./js/app/schedule/CardsView.js"></script>
 
+  <script type="text/javascript" src="./js/app/schedule/ToolbarView.js"></script>
+
   <script type="text/javascript" src="./js/app/schedule/ScheduleLoad.js"></script>
 
 
@@ -30,33 +32,34 @@
 </head>
 <body>
   <div id="wrapper">
-    <div id="toolbar">
-      <div id="movie" class="box">
-        <h1 class="title-1">Movie</h1>
-        <div class="card card-actived" id="card-actual">
-          <h2 class="title-2">No es país para viejos</h2>
-        </div>
-        <div id="fare">
-          <input class="input-box" type="text" value="6,50" /> €
-        </div>
-      </div> <!-- movie -->
-
-      <div id="session" class="box">
-        <h1 class="title-1">Room 1</h1>
-        <div id="schedule">
-          <div id="minutes">+128 min</div>
-          <div id="times">
-            <input class="input-box" type="text" value="22:10" />
-            <input class="input-box" type="text" value="24:40" />
-          </div>
-        </div>
-      </div> <!-- session -->
-
-      <div id="buttons">
-        <input type="button" value="modify" />
-        <input class="remove" type="button" value="remove" />
+    <div id="search-box">
+      <div class="header box">
+        <h1 class="title-1">Search</h1>
+        <input class="input-box big" type="text" placeholder="movie title" />
       </div>
-    </div> <!-- toolbar -->
+
+      <div class="results framed-box">
+        <ul>
+          <li>
+            <div class="box selected" id="card-search-1">
+              <h2 class="title-2">Es una movie que te cagas</h2>
+            </div>
+          </li>
+
+          <li>
+            <div class="box" id="card-search-1">
+              <h2 class="title-2">Es una movie 2</h2>
+            </div>
+          </li>
+
+          <li>
+            <div class="box" id="card-search-1">
+              <h2 class="title-2">Es una movie 3</h2>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div> <!-- search-box -->
 
     <div id="panel">
       <div id="ruler-left" class="ruler">
@@ -70,7 +73,7 @@
             Room 1
           </h1>
 
-          <div class="schedule-rail">
+          <div class="schedule-rail framed-box">
             <div class="schedule-grid">
               <ul>
               </ul>
@@ -84,7 +87,7 @@
             Room 2
           </h1>
 
-          <div class="schedule-rail">
+          <div class="schedule-rail framed-box">
             <div class="schedule-grid">
               <ul>
               </ul>
@@ -97,7 +100,7 @@
             Room 3
           </h1>
 
-          <div class="schedule-rail">
+          <div class="schedule-rail framed-box">
             <div class="schedule-grid">
               <ul>
               </ul>
@@ -108,7 +111,10 @@
 
       <div id="ruler-right" class="ruler">
       </div>
-    </div>
+    </div><!-- panel -->
+
+    <div id="toolbar">
+    </div> <!-- toolbar -->
   </div>
 
 <script>
@@ -141,7 +147,7 @@
 
   $(function() {
 
-    $('.card').droppable({
+    $('.card.in-rail').droppable({
       greedy: true,
       tolerance: 'touch',
       drop: function(event,ui){
@@ -160,7 +166,7 @@
 
 
 <script type="text/template" id="template-card">
-  <div class="card box" id="card-<%= id %>">
+  <div class="card box in-rail" id="card-<%= id %>">
     <div class="times">
       <div class="time time-ini"><%= time_ini %></div>
       <div class="time time-end"><%= time_end %></div>
@@ -170,6 +176,33 @@
   </div>
 </script>
 
+<script type="text/template" id="template-toolbar">
+  <div id="movie" class="box">
+    <h1 class="title-1">Movie</h1>
+    <div class="card selected" id="card-actual">
+      <h2 class="title-2"><%= title %></h2>
+    </div>
+    <div id="fare">
+      <input class="input-box" type="text" value="<%= price %>" /> €
+    </div>
+  </div> <!-- movie -->
+
+  <div id="session" class="box">
+    <h1 class="title-1">Room <%= room %></h1>
+    <div id="schedule">
+      <div id="minutes">+<%= mins %> min</div>
+      <div id="times">
+        <input class="input-box" type="text" value="<%= time_ini %>" />
+        <input class="input-box" type="text" value="<%= time_end %>" />
+      </div>
+    </div>
+  </div> <!-- session -->
+
+  <div id="buttons">
+    <input type="button" value="modify" />
+    <input class="remove" type="button" value="remove" />
+  </div>
+</script>
 
 
 </body>
