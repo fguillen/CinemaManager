@@ -1,19 +1,33 @@
 $(function(){
   drawRulers();
 
-  Schedule.scheduleCards = new Schedule.Cards( data1.schedule_cards );
+  Schedule.cards =
+    new Schedule.Cards(
+      data.cards
+    );
 
-  Schedule.scheduleCardsView =
+  Schedule.cardsView =
     new Schedule.CardsView({
       el:           "#schedules",
-      collection:   Schedule.scheduleCards
+      collection:   Schedule.cards
     });
 
   Schedule.toolbar =
     new Schedule.ToolbarView({
       el:           "#toolbar",
-      collection:   Schedule.scheduleCards
+      collection:   Schedule.cards
     });
+
+  Schedule.searchResults =
+    new Schedule.SearchResults(
+      data.search_results
+    );
+
+  Schedule.searchResultsView =
+    new Schedule.SearchResultsView({
+      el:           "#search-box .results ul",
+      collection:   Schedule.searchResults
+    })
 
 
 });

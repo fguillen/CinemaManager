@@ -31,6 +31,15 @@ $(function(){
           $(this).draggable( 'option', 'revert', _self.revertConfiguration );
         }
       });
+
+      this.$el.droppable({
+        greedy: true,
+        tolerance: 'touch',
+        drop: function(event,ui){
+          $(this).effect("highlight", {}, 1000);
+          ui.draggable.draggable( "option", "revert", true );
+        }
+      });
     },
 
     revertConfiguration: function( droppableObj ){
@@ -56,14 +65,9 @@ $(function(){
     },
 
     calculateTimes: function( gridElement ){
-      this.model.set( "time_ini", gridElement.attr( "data-time" ) );
-      this.model.set( "room", gridElement.parents(".schedule").attr( "data-room" ) );
+      var cardInfo = Maths.calculateCardInfo( gridElement, this.model.get( "mins" ) );
 
-      var dateObj     = new Date( Date.parse( "2012-07-20 " + this.model.get( "time_ini" ), "MM/dd/yyyy HH:MM" ) );
-      var newDateObj  = new Date( dateObj.getTime() + this.model.get( "mins" ) * 60000 );
-      var timeEnd     = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
-
-      this.model.set( "time_end", timeEnd );
+      this.model.set( cardInfo );
 
       this.$el.find( ".time-ini" ).html( this.model.get( "time_ini" ) );
       this.$el.find( ".time-end" ).html( this.model.get( "time_end" ) );

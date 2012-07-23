@@ -11,15 +11,20 @@
   <script type="text/javascript" src="./js/libs/underscore.js"></script>
   <script type="text/javascript" src="./js/libs/backbone.js"></script>
 
-  <script type="text/javascript" src="./js/app/schedule/data1.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/data.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/Maths.js"></script>
 
   <script type="text/javascript" src="./js/app/schedule/Schedule.js"></script>
 
   <script type="text/javascript" src="./js/app/schedule/Card.js"></script>
   <script type="text/javascript" src="./js/app/schedule/CardView.js"></script>
-
   <script type="text/javascript" src="./js/app/schedule/Cards.js"></script>
   <script type="text/javascript" src="./js/app/schedule/CardsView.js"></script>
+
+  <script type="text/javascript" src="./js/app/schedule/SearchResult.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/SearchResults.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/SearchResultView.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/SearchResultsView.js"></script>
 
   <script type="text/javascript" src="./js/app/schedule/ToolbarView.js"></script>
 
@@ -40,23 +45,6 @@
 
       <div class="results framed-box">
         <ul>
-          <li>
-            <div class="box selected" id="card-search-1">
-              <h2 class="title-2">Es una movie que te cagas</h2>
-            </div>
-          </li>
-
-          <li>
-            <div class="box" id="card-search-1">
-              <h2 class="title-2">Es una movie 2</h2>
-            </div>
-          </li>
-
-          <li>
-            <div class="box" id="card-search-1">
-              <h2 class="title-2">Es una movie 3</h2>
-            </div>
-          </li>
         </ul>
       </div>
     </div> <!-- search-box -->
@@ -147,14 +135,7 @@
 
   $(function() {
 
-    $('.card.in-rail').droppable({
-      greedy: true,
-      tolerance: 'touch',
-      drop: function(event,ui){
-        $(this).effect("highlight", {}, 1000);
-        ui.draggable.draggable( "option", "revert", true );
-      }
-    });
+
 
     $('.schedule-grid li').droppable({
       tolerance: 'fit'
@@ -172,6 +153,12 @@
       <div class="time time-end"><%= time_end %></div>
     </div>
 
+    <h2 class="title-2"><%= title %></h2>
+  </div>
+</script>
+
+<script type="text/template" id="template-search-result">
+  <div class="box" id="card-search-<%= id %>">
     <h2 class="title-2"><%= title %></h2>
   </div>
 </script>
