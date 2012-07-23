@@ -38,7 +38,7 @@ body {
 }
 
 #wrapper {
-  width: 920px;
+  width: 987px;
   margin: 0 auto;
 }
 
@@ -99,6 +99,11 @@ body {
   float: left;
   margin-right: 10px;
   width: 108px;
+}
+
+.schedule:last-child {
+  border: 1px solid red;
+  margin-right: 0px;
 }
 
 .schedule .schedule-rail{
@@ -182,12 +187,27 @@ body {
   margin-right: 5px;
 }
 
+#ruler-right {
+ margin-right: 10px;
+}
+
 .ruler li {
   height: 17px;
   margin-bottom: -7px;
 
   background-image: url( "./ruler.png" );
   background-repeat: no-repeat;
+}
+
+#ruler-right li {
+  -webkit-transform:scaleX(-1);
+  transform:scaleX(-1);
+}
+
+#ruler-right li span{
+  padding-left: 22px;
+  transform:scaleX(-1);
+  -webkit-transform:scaleX(-1);
 }
 
 .ruler li span {
@@ -211,6 +231,7 @@ body {
 }
 
 #schedules {
+  float: left;
   position: relative;
   overflow: hidden;
 }
