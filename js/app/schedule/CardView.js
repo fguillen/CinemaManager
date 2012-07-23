@@ -16,6 +16,7 @@ $(function(){
 
       this.model.on( "schedule:has_been_selected", this.markAsSelected, this );
       this.model.on( "schedule:has_been_unselected", this.unmarkAsSelected, this );
+      this.model.on( "destroy", this.unlink, this );
 
 
       var _self = this;
@@ -106,6 +107,11 @@ $(function(){
       });
 
       return this;
-    }
+    },
+
+    unlink: function(){
+      this.model.off( null, null, this );
+      this.$el.remove();
+    },
   });
 });

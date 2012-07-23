@@ -14,6 +14,29 @@ body {
   font-size: 20px;
 }
 
+.button {
+  background-color: #007194;
+  color: white;
+  border: none;
+  font-family: "Haettenschweiler";
+  font-size: 20px;
+  padding: 3 10px;
+}
+
+.button:hover {
+  color: #94D7F1;
+}
+
+.button:active {
+  position: relative;
+  top: 1px;
+}
+
+.font-narrow {
+  font-family: "Arial Narrow";
+  font-size: 16px;
+}
+
 #wrapper {
   width: 920px;
   margin: 0 auto;
@@ -26,7 +49,6 @@ body {
 
 #search-box .results {
   padding: 10px;
-  overflow: hidden;
 }
 
 #search-box .results li {
@@ -39,9 +61,24 @@ body {
 }
 
 
-#toolbar {
-  width: 170px;
+#selected-box {
+  width: 190px;
   float: left;
+}
+
+#selected-box #buttons {
+  text-align: right;
+}
+
+#selected-box .info{
+  padding: 10px;
+}
+
+#selected-box .info .box {
+  margin-bottom: 10px;
+}
+
+#selected-box #fare span{
 }
 
 #panel {
@@ -54,8 +91,6 @@ body {
 }
 
 #session #schedule #minutes {
-  font-family: "Arial Narrow";
-  font-size: 16px;
   margin-left: 50px;
 }
 
@@ -127,8 +162,6 @@ body {
 .card .times .time{
   background-color: white;
   color: #007194;
-  font-family: "Arial Narrow";
-  font-size: 16px;
   width: 35px;
   float: left;
 }
@@ -141,7 +174,6 @@ body {
   margin-top: 50px;
   float: left;
   width: 50px;
-  font-family: "Arial Narrow";
   font-size: 14px;
   color: #7a7a7a;
 }

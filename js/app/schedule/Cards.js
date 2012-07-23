@@ -1,5 +1,7 @@
 $(function(){
   Schedule.Cards = Backbone.Collection.extend({
+    url: "/cards",
+
     model: Schedule.Card,
 
     initialize: function(){

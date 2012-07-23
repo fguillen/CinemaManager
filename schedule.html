@@ -26,7 +26,7 @@
   <script type="text/javascript" src="./js/app/schedule/SearchResultView.js"></script>
   <script type="text/javascript" src="./js/app/schedule/SearchResultsView.js"></script>
 
-  <script type="text/javascript" src="./js/app/schedule/ToolbarView.js"></script>
+  <script type="text/javascript" src="./js/app/schedule/SelectedBoxView.js"></script>
 
   <script type="text/javascript" src="./js/app/schedule/ScheduleLoad.js"></script>
 
@@ -50,7 +50,7 @@
     </div> <!-- search-box -->
 
     <div id="panel">
-      <div id="ruler-left" class="ruler">
+      <div id="ruler-left" class="ruler font-narrow">
         <ul class="time-ruler">
         </ul>
       </div>
@@ -101,8 +101,15 @@
       </div>
     </div><!-- panel -->
 
-    <div id="toolbar">
-    </div> <!-- toolbar -->
+    <div id="selected-box">
+      <div class="header box">
+        <h1 class="title-1">Selected Movie</h1>
+      </div>
+
+      <div class="info framed-box">
+      </div>
+    </div> <!-- selected-box -->
+
   </div>
 
 <script>
@@ -148,7 +155,7 @@
 
 <script type="text/template" id="template-card">
   <div class="card box in-rail" id="card-<%= id %>">
-    <div class="times">
+    <div class="times font-narrow">
       <div class="time time-ini"><%= time_ini %></div>
       <div class="time time-end"><%= time_end %></div>
     </div>
@@ -163,21 +170,20 @@
   </div>
 </script>
 
-<script type="text/template" id="template-toolbar">
-  <div id="movie" class="box">
-    <h1 class="title-1">Movie</h1>
-    <div class="card selected" id="card-actual">
-      <h2 class="title-2"><%= title %></h2>
-    </div>
-    <div id="fare">
-      <input class="input-box" type="text" value="<%= price %>" /> €
-    </div>
-  </div> <!-- movie -->
+<script type="text/template" id="template-selected-info">
+  <div class="box" id="card-<%= id %>">
+    <h2 class="title-2"><%= title %></h2>
+  </div>
+
+  <div id="fare" class="box">
+    <span class="font-narrow">Price</span>
+    <input class="input-box" type="text" value="<%= price %>" /> €
+  </div>
 
   <div id="session" class="box">
     <h1 class="title-1">Room <%= room %></h1>
     <div id="schedule">
-      <div id="minutes">+<%= mins %> min</div>
+      <div id="minutes" class="font-narrow">+<%= mins %> min</div>
       <div id="times">
         <input class="input-box" type="text" value="<%= time_ini %>" />
         <input class="input-box" type="text" value="<%= time_end %>" />
@@ -186,8 +192,7 @@
   </div> <!-- session -->
 
   <div id="buttons">
-    <input type="button" value="modify" />
-    <input class="remove" type="button" value="remove" />
+    <input class="remove button" type="button" value="x remove" />
   </div>
 </script>
 
