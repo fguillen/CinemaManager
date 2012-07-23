@@ -16,3 +16,19 @@ Maths.calculateCardInfo = function( gridElement, mins ){
 
   return result;
 }
+
+
+// from: http://www.dzone.com/snippets/determining-number-days-month
+Maths.monthInfo = function( month, year ) {
+  console.log( "month", month );
+
+  var numDays = ( 32 - ( new Date( year, month, 32 ) ).getDate() );
+
+  var result = {
+    numDays:      numDays,
+    startWeekDay: new Date( year, month, 1 ).getDay(),
+    endsWeekDay:  new Date( year, month, numDays - 1 ).getDay()
+  }
+
+  return result;
+}

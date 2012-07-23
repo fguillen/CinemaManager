@@ -9,8 +9,6 @@ $(function(){
     },
 
     unmarkOtherSelected: function( model ){
-      console.log( "Cards.unmarkOtherSelected", model.id );
-
       this.each( function( currentModel ){
         if( currentModel != model ) {
           currentModel.set({ "selected": false });

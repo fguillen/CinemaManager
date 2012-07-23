@@ -12,7 +12,7 @@ $(function(){
       collection:   Schedule.cards
     });
 
-  Schedule.toolbar =
+  Schedule.selectedBoxView =
     new Schedule.SelectedBoxView({
       el:           "#selected-box .info",
       collection:   Schedule.cards

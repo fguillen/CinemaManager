@@ -87,7 +87,7 @@ body {
   margin-left: 20px;
 }
 
-#panel .header {
+#panel > .header {
   margin-left: 50px;
   color: #007194;
   margin-bottom: 10px;
