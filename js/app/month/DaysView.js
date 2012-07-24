@@ -10,7 +10,7 @@ $(function(){
         this.$el.append( "<li class=\"empty\"></li>" );
       }
 
-      for( var day = 1; day <= 30; day++ ){
+      for( var day = 1; day <= monthInfo.numDays; day++ ){
         var dayView =
           new ScheduleMonth.DayView({
             month:  this.options.month,
@@ -21,7 +21,7 @@ $(function(){
         this.$el.append( dayView.render().el );
       }
 
-      for( var day = monthInfo.endsWeekDay; day <= 6; day++ ){
+      for( var day = monthInfo.endWeekDay; day < 6; day++ ){
         console.log( "adding empty days end" );
         this.$el.append( "<li class=\"empty\"></li>" );
       }

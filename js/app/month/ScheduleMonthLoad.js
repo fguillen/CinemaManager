@@ -7,7 +7,7 @@ $(function(){
   ScheduleMonth.daysView =
     new ScheduleMonth.DaysView({
       el: "ul#days",
-      month: 4,
+      month: 2,
       year: 2012
     });
 
