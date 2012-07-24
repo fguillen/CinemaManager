@@ -48,7 +48,7 @@ $(function(){
 
         card.set({ "selected": true });
 
-        this.model.trigger( "schedule:dropped", this.model );
+        this.model.trigger( "app:dropped", this.model );
         return false;
       }
     },

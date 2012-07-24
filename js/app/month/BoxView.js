@@ -5,12 +5,12 @@ $(function(){
     },
 
     events: {
-      "click": "toggleSelect",
+      "click": "selectMovie",
     },
 
     initialize: function(){
-      this.model.on( "schedule:has_been_selected", this.markAsSelected, this );
-      this.model.on( "schedule:has_been_unselected", this.unmarkAsSelected, this );
+      this.model.on( "app:has_been_movie_selected", this.markAsSelected, this );
+      this.model.on( "app:has_been_movie_unselected", this.unmarkAsSelected, this );
     },
 
     render: function(){
@@ -36,12 +36,15 @@ $(function(){
       return this;
     },
 
-    toggleSelect: function(){
-      if( this.model.get( "selected" ) ) {
-        this.model.set({ "selected": false });
-      } else {
-        this.model.set({ "selected": true });
-      }
+    selectMovie: function(){
+      console.log( "BoxView.selectMovie", this.model.get( "title" ) );
+
+      var movie =
+        ScheduleMonth.movies.find( function( model ){
+          return model.get( "title" ) == this.model.get( "title" );
+        }, this);
+
+      movie.set( "selected", true );
     },
 
     markAsSelected: function() {

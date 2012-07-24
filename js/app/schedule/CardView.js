@@ -14,8 +14,8 @@ $(function(){
       this.$el.html( this.template( this.model.toJSON() ) );
       this.setElement( this.$el.find( ".card" ) );
 
-      this.model.on( "schedule:has_been_selected", this.markAsSelected, this );
-      this.model.on( "schedule:has_been_unselected", this.unmarkAsSelected, this );
+      this.model.on( "app:has_been_selected", this.markAsSelected, this );
+      this.model.on( "app:has_been_unselected", this.unmarkAsSelected, this );
       this.model.on( "destroy", this.unlink, this );
 
 
@@ -51,7 +51,7 @@ $(function(){
       } else {
         console.log( "droppen on", droppableObj );
         this.calculateTimes( droppableObj );
-        this.model.trigger( "schedule:dropped", this.model );
+        this.model.trigger( "app:dropped", this.model );
         return false;
       }
     },

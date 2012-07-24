@@ -5,7 +5,7 @@ $(function(){
     model: Schedule.Card,
 
     initialize: function(){
-      this.on( "schedule:has_been_selected", this.unmarkOtherSelected );
+      this.on( "app:has_been_selected", this.unmarkOtherSelected );
     },
 
     filterByDate: function( date ){
@@ -24,6 +24,20 @@ $(function(){
         if( currentModel != model ) {
           currentModel.set({ "selected": false });
         }
+      });
+    },
+
+    markMovieSelected: function( title ){
+      this.each( function( currentModel ){
+        if( currentModel.get( "title" ) == title ) {
+          currentModel.set({ "movie_selected": true });
+        }
+      });
+    },
+
+    unmarkMovieSelected: function(){
+      this.each( function( currentModel ){
+        currentModel.set({ "movie_selected": false });
       });
     }
   });

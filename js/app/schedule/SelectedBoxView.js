@@ -7,14 +7,14 @@ $(function(){
     },
 
     initialize: function( opts ){
-      this.collection.on( "schedule:has_been_selected", this.updateSelected, this );
+      this.collection.on( "app:has_been_selected", this.updateSelected, this );
     },
 
     updateSelected: function( model ){
       this.model = model;
-      this.model.on( "schedule:has_been_unselected", this.unlink, this );
+      this.model.on( "app:has_been_unselected", this.unlink, this );
       this.model.on( "destroy", this.unlink, this );
-      this.model.on( "schedule:dropped", this.render, this );
+      this.model.on( "app:dropped", this.render, this );
 
       this.render();
     },

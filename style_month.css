@@ -26,6 +26,11 @@
   margin-bottom: 10px;
 }
 
+#movies-list .results li.selected {
+  color: white;
+  background-color: #007194;
+}
+
 #movies-list .results li:last-child {
   margin-bottom: 0px;
 }
