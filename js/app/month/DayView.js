@@ -10,7 +10,12 @@ $(function(){
     },
 
     render: function(){
-      this.$el.html( this.template({ day: this.options.day }) );
+      this.$el.html( this.template({ day: sprintf( "%02d", this.options.day ), }) );
+
+      this.options.cards.each( function( card ){
+        var boxView = new ScheduleMonth.BoxView({ model: card });
+        this.$el.find( ".rail[data-room='" + card.get( "room" ) + "']").append( boxView.render().el );
+      }, this);
       return this;
     }
   });

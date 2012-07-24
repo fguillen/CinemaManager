@@ -11,16 +11,31 @@
   <script type="text/javascript" src="./js/libs/jquery.js"></script>
   <script type="text/javascript" src="./js/libs/jquery-ui.js"></script>
   <script type="text/javascript" src="./js/libs/sprintf.js"></script>
-  <script type="text/javascript" src="./js/libs/date.js"></script>
   <script type="text/javascript" src="./js/libs/underscore.js"></script>
   <script type="text/javascript" src="./js/libs/backbone.js"></script>
+  <script type="text/javascript" src="./js/libs/moment.js"></script>
 
   <script type="text/javascript" src="./js/app/Maths.js"></script>
 
+
+
+  <script type="text/javascript" src="./js/app/month/Schedule.js"></script>
   <script type="text/javascript" src="./js/app/month/ScheduleMonth.js"></script>
+
+  <script type="text/javascript" src="./js/app/common/Card.js"></script>
+  <script type="text/javascript" src="./js/app/common/Cards.js"></script>
+
   <script type="text/javascript" src="./js/app/month/data_month.js"></script>
+
+  <script type="text/javascript" src="./js/app/month/Movie.js"></script>
+  <script type="text/javascript" src="./js/app/month/Movies.js"></script>
+  <script type="text/javascript" src="./js/app/month/MovieView.js"></script>
+  <script type="text/javascript" src="./js/app/month/MoviesView.js"></script>
+
   <script type="text/javascript" src="./js/app/month/DayView.js"></script>
   <script type="text/javascript" src="./js/app/month/DaysView.js"></script>
+  <script type="text/javascript" src="./js/app/month/BoxView.js"></script>
+
   <script type="text/javascript" src="./js/app/month/ScheduleMonthLoad.js"></script>
 
 </head>
@@ -32,10 +47,6 @@
       </div>
       <div class="results framed-box">
         <ul>
-          <li class="box">Un invierno loco de locos locos y tal</li>
-          <li class="box">Otra movie cualquiera</li>
-          <li class="box selected">Open Water</li>
-          <li class="box">Una casa roja y azul de tejas</li>
         </ul>
       </div>
     </div> <!-- movies-list -->
@@ -79,6 +90,10 @@
       <li class="rail" data-room="4"></li>
     </ul>
   </div>
+</script>
+
+<script type="text/template" id="template-movie">
+  <%= title %>
 </script>
 
 

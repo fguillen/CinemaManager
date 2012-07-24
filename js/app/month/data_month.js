@@ -44,4 +44,24 @@ data_month.cards = [
     "time_end": "18:40",
     "date": "2012-01-01"
   },
+
+  {
+    "id": 5,
+    "title": "No es país para viejos 2",
+    "mins": 90,
+    "price": "6,50",
+    "room": 4,
+    "time_ini": "17:00",
+    "date": "2012-01-02"
+  },
+
+  {
+    "id": 6,
+    "title": "No es país para viejos 2",
+    "mins": 90,
+    "price": "6,50",
+    "room": 4,
+    "time_ini": "01:00",
+    "date": "2012-01-02"
+  },
 ]

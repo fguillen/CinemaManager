@@ -38,7 +38,7 @@
 #panel #days > li {
   box-sizing: border-box;
   float: left;
-  width: 120px;
+  width: 114px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -54,13 +54,28 @@
 }
 
 #panel .rail {
+  position: relative;
   border: 1px solid #94D7F1;
   box-sizing: border-box;
   margin-bottom: 5px;
   height: 12px;
-  width: 100%;
+  width: 100px;
 }
 
 #panel .rail:last-child {
   margin-bottom: 0px;
+}
+
+#panel .rail .card-box {
+  position: absolute;
+  top: 1px;
+  height: 8px;
+  background-color: #94D7F1;
+}
+
+#panel .rail .card-box.selected {
+  position: absolute;
+  top: 1px;
+  height: 8px;
+  background-color: #007194;
 }

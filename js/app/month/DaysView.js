@@ -1,6 +1,8 @@
 $(function(){
   ScheduleMonth.DaysView = Backbone.View.extend({
     render: function(){
+      console.log( "DaysView this.options", this.options );
+
       var monthInfo = Maths.monthInfo( this.options.month, this.options.year );
 
       console.log( "monthInfo", monthInfo );
@@ -11,11 +13,14 @@ $(function(){
       }
 
       for( var day = 1; day <= monthInfo.numDays; day++ ){
+        var date = new Date( this.options.year, this.options.month, day );
+
         var dayView =
           new ScheduleMonth.DayView({
             month:  this.options.month,
             year:   this.options.year,
-            day:    sprintf( "%02d", day )
+            day:    day,
+            cards:  this.options.cards.filterByDate( date )
           });
 
         this.$el.append( dayView.render().el );

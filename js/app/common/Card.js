@@ -6,7 +6,6 @@ $(function(){
     },
 
     changeSelected: function( model, val ){
-      console.log( "Card.changeSelected", model.id, val );
       if( val ) {
         this.trigger( "schedule:has_been_selected", this );
       } else {

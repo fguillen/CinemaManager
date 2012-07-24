@@ -19,19 +19,13 @@ Maths.calculateCardInfo = function( gridElement, mins ){
 
 
 Maths.monthInfo = function( month, year ) {
-  console.log( "month", month );
-
-  var numDays       = new Date( year, month, 1 ).getDaysInMonth( year, month );
+  var numDays       = new Date( year, month + 1, 0).getDate();
   var startWeekDay  = new Date( year, month, 1 ).getDay();
   var endWeekDay   =  new Date( year, month, numDays ).getDay();
 
   // normalizing week days
   startWeekDay = (startWeekDay + 6) % 7;
   endWeekDay   = (endWeekDay + 6) % 7;
-
-  console.log( "date for numDays", new Date( year, month, 0 ) );
-  console.log( "date for startWeekDay", new Date( year, month, 1 ) );
-  console.log( "date for endWeekDay", new Date( year, month, numDays ) );
 
   var result = {
     numDays:      numDays,
@@ -40,4 +34,16 @@ Maths.monthInfo = function( month, year ) {
   }
 
   return result;
+}
+
+Maths.diffMins = function( dateA, dateB ){
+  // formalizing dateB if it is night session
+  if( dateB.getHours() < 4 ) {
+    dateB = moment( dateB ).add( "days", 1 ).toDate();
+  }
+
+  var milliseconds = moment( dateB ).diff( moment( dateA ) );
+  var minutes = ( milliseconds / 1000 ) / 60;
+
+  return minutes;
 }
