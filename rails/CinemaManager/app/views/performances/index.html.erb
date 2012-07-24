@@ -1,0 +1,27 @@
+<% title "Performances" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Synopsis</th>
+    <th>Title Original</th>
+    <th>Year</th>
+    <th>Duration</th>
+    <th>Card</th>
+  </tr>
+  <% for performance in @performances %>
+    <tr>
+      <td><%= performance.title %></td>
+      <td><%= performance.synopsis %></td>
+      <td><%= performance.title_original %></td>
+      <td><%= performance.year %></td>
+      <td><%= performance.duration %></td>
+      <td><%= performance.card %></td>
+      <td><%= link_to "Show", performance %></td>
+      <td><%= link_to "Edit", edit_performance_path(performance) %></td>
+      <td><%= link_to "Destroy", performance, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Performance", new_performance_path %></p>

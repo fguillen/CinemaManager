@@ -1,0 +1,28 @@
+<%= form_for @performance do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :synopsis %><br />
+    <%= f.text_area :synopsis %>
+  </p>
+  <p>
+    <%= f.label :title_original %><br />
+    <%= f.text_field :title_original %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </p>
+  <p>
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </p>
+  <p>
+    <%= f.label :card %><br />
+    <%= f.text_field :card %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,188 @@
+<div id="wrapper" class="week">
+  <div id="search-box">
+    <div class="header box">
+      <h1 class="title-1">Search</h1>
+      <input class="input-box big" type="text" placeholder="movie title" />
+    </div>
+
+    <div class="results framed-box">
+      <ul>
+      </ul>
+    </div>
+  </div> <!-- search-box -->
+
+  <div id="panel">
+    <div class="header">
+      <div class="date">
+        <a href="#dayless"><span class="iconic arrow_left"></span></a>
+        Friday, 13th April of 2012
+        <a href="#daymore"><span class="iconic arrow_right"></span></a>
+      </div>
+      <div class="controls">
+        <a href="./schedule_month.html"> month view <span class="iconic fullscreen_exit"></span></a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="ruler-left" class="ruler font-narrow">
+        <ul class="time-ruler">
+        </ul>
+      </div>
+
+      <div id="schedules">
+        <div class="schedule" id="schedule-room-1" data-room="1">
+          <h1 class="title-1">
+            Room 1
+          </h1>
+
+          <div class="schedule-rail framed-box">
+            <div class="schedule-grid">
+              <ul>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="schedule" id="schedule-room-2" data-room="2">
+          <h1 class="title-1">
+            Room 2
+          </h1>
+
+          <div class="schedule-rail framed-box">
+            <div class="schedule-grid">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule" id="schedule-room-3" data-room="3">
+          <h1 class="title-1">
+            Room 3
+          </h1>
+
+          <div class="schedule-rail framed-box">
+            <div class="schedule-grid">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule" id="schedule-room-4" data-room="4">
+          <h1 class="title-1">
+            Room 4
+          </h1>
+
+          <div class="schedule-rail framed-box">
+            <div class="schedule-grid">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="ruler-right" class="ruler font-narrow">
+        <ul class="time-ruler">
+        </ul>
+      </div>
+    </div>
+  </div><!-- panel -->
+
+  <div id="selected-box">
+    <div class="header box">
+      <h1 class="title-1">Selected Movie</h1>
+    </div>
+
+    <div class="info framed-box">
+    </div>
+  </div> <!-- selected-box -->
+
+</div>
+
+<script>
+
+  function drawRulers(){
+    var dateIni = "17:00";
+    var dateEnd = "03:00";
+    var dateActual = dateIni;
+
+    while( dateActual >= dateIni || dateActual <= dateEnd ){
+      var dateObj = new Date( Date.parse( "2012-07-20 " + dateActual,"MM/dd/yyyy HH:MM" ) );
+
+      // Ruler li
+      var newRulerLi = $("<li><span>" + dateActual + "</span></li>")
+      if( dateObj.getMinutes() == 0 ) newRulerLi.addClass( "visible" );
+      $("ul.time-ruler").append( newRulerLi );
+
+      // Grid elements
+      var newGridElement = $( "<li data-time=\"" + dateActual + "\"></li>" );
+      $(".schedule-grid ul").append( newGridElement );
+
+
+      var newDateObj  = new Date( dateObj.getTime() + 10 * 60000 );
+      dateActual      = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
+    }
+  }
+
+
+
+
+  $(function() {
+
+
+
+    $('.schedule-grid li').droppable({
+      tolerance: 'fit'
+    });
+
+  });
+
+</script>
+
+
+<script type="text/template" id="template-card">
+  <div class="card box in-rail" id="card-<%= id %>">
+    <div class="times font-narrow">
+      <div class="time time-ini"><%= time_ini %></div>
+      <div class="time time-end"><%= time_end %></div>
+    </div>
+
+    <h2 class="title-2"><%= title %></h2>
+  </div>
+</script>
+
+<script type="text/template" id="template-search-result">
+  <div class="box" id="card-search-<%= id %>">
+    <h2 class="title-2"><%= title %></h2>
+  </div>
+</script>
+
+<script type="text/template" id="template-selected-info">
+  <div class="box" id="card-<%= id %>">
+    <h2 class="title-2"><%= title %></h2>
+  </div>
+
+  <div id="fare" class="box">
+    <span class="font-narrow">Price</span>
+    <input class="input-box" type="text" value="<%= price %>" /> €
+  </div>
+
+  <div id="session" class="box">
+    <h1 class="title-1">Room <%= room %></h1>
+    <div id="schedule">
+      <div id="minutes" class="font-narrow">+<%= mins %> min</div>
+      <div id="times">
+        <input class="input-box" type="text" value="<%= time_ini %>" />
+        <input class="input-box" type="text" value="<%= time_end %>" />
+      </div>
+    </div>
+  </div> <!-- session -->
+
+  <div id="buttons">
+    <a href="#remove" class="remove button"><span class="iconic x_alt"></span> remove</a>
+  </div>
+</script>

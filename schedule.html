@@ -7,6 +7,8 @@
   <link href="./reset.css" rel="stylesheet" type="text/css">
   <link href="./style.css" rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" href='./css/fonts/iconic_fill.css' type='text/css' media='screen'>
+
   <script type="text/javascript" src="./js/libs/jquery.js"></script>
   <script type="text/javascript" src="./js/libs/jquery-ui.js"></script>
   <script type="text/javascript" src="./js/libs/sprintf.js"></script>
@@ -37,7 +39,7 @@
 
 </head>
 <body>
-  <div id="wrapper">
+  <div id="wrapper" class="week">
     <div id="search-box">
       <div class="header box">
         <h1 class="title-1">Search</h1>
@@ -52,7 +54,14 @@
 
     <div id="panel">
       <div class="header">
-        &lt; Friday, 13th April of 2012 &gt;
+        <div class="date">
+          <a href="#dayless"><span class="iconic arrow_left"></span></a>
+          Friday, 13th April of 2012
+          <a href="#daymore"><span class="iconic arrow_right"></span></a>
+        </div>
+        <div class="controls">
+          <a href="./schedule_month.html"> month view <span class="iconic fullscreen_exit"></span></a>
+        </div>
       </div>
 
       <div class="content">
@@ -215,7 +224,7 @@
   </div> <!-- session -->
 
   <div id="buttons">
-    <input class="remove button" type="button" value="x remove" />
+    <a href="#remove" class="remove button"><span class="iconic x_alt"></span> remove</a>
   </div>
 </script>
 
