@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'Haettenschweiler';
-  src: url( 'haettenschweiler.ttf' );
+  src: url( '/assets/haettenschweiler.ttf' );
 }
 
 body {
@@ -221,7 +221,7 @@ body {
   height: 17px;
   margin-bottom: -7px;
 
-  background-image: url( "./ruler.png" );
+  background-image: url( "/assets/ruler.png" );
   background-repeat: no-repeat;
 }
 

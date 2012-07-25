@@ -36,17 +36,17 @@ $(function(){
       if( droppableObj === false ) {
         return true;
       } else {
-        var cardInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "mins" ) );
-        cardInfo.title = this.model.get( "title" );
-        cardInfo.mins = this.model.get( "mins" );
-        cardInfo.id = Math.random(1000);
-        cardInfo.price = "6,50";
+        var showingInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "mins" ) );
+        showingInfo.title = this.model.get( "title" );
+        showingInfo.mins = this.model.get( "mins" );
+        showingInfo.id = Math.random(1000);
+        showingInfo.price = "6,50";
 
-        var card = new Schedule.Card( cardInfo )
-        Schedule.cards.add( card );
+        var showing = new App.Common.Showing( showingInfo )
+        App.Common.showings.add( showing );
 
 
-        card.set({ "selected": true });
+        showing.set({ "selected": true });
 
         this.model.trigger( "app:dropped", this.model );
         return false;

@@ -1,5 +1,5 @@
 $(function(){
-  ScheduleMonth.MovieView = Backbone.View.extend({
+  App.Calendar.Month.PerformanceView = Backbone.View.extend({
     tagName: "li",
 
     attributes: {
@@ -10,7 +10,7 @@ $(function(){
       "click": "toggleSelect"
     },
 
-    template: _.template( $("#template-movie").html() ),
+    template: _.template( $("#template-performance").html() ),
 
     initialize: function(){
       this.model.on( "app:has_been_selected", this.markAsSelected, this );
@@ -18,7 +18,7 @@ $(function(){
     },
 
     render: function(){
-      console.log( "MovieView.render" );
+      console.log( "PerformanceView.render" );
 
       this.$el.html( this.template( this.model.toJSON() ) );
       return this;

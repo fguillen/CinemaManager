@@ -7,6 +7,7 @@ CinemaManager::Application.routes.draw do
 
 
   match '/calendar/day/:date' => 'calendars#day', :as => :calendar_day
+  match '/calendar/month/:date' => 'calendars#month', :as => :calendar_month
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

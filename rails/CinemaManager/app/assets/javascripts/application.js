@@ -13,6 +13,7 @@
 //= require libs/jquery.js
 //= require libs/jquery-ui.js
 //= require libs/sprintf.js
+//= require libs/moment.js
 //= require libs/underscore.js
 //= require libs/backbone.js
 //= require jquery_ujs
@@ -27,13 +28,4 @@
 //= require app/common/Showing.js
 //= require app/common/Showings.js
 
-//= require app/calendar/day/ShowingView.js
-//= require app/calendar/day/ShowingsView.js
-//= require app/calendar/day/SearchResult.js
-//= require app/calendar/day/SearchResults.js
-//= require app/calendar/day/SearchResultView.js
-//= require app/calendar/day/SearchResultsView.js
-//= require app/calendar/day/SelectedBoxView.js
-
-//= require app/AppStart.js
 

@@ -1,7 +1,7 @@
 $(function(){
-  ScheduleMonth.BoxView = Backbone.View.extend({
+  App.Calendar.Month.ShowingView = Backbone.View.extend({
     attributes: {
-      "class": "card-box"
+      "class": "card-showing"
     },
 
     events: {
@@ -37,14 +37,14 @@ $(function(){
     },
 
     selectMovie: function(){
-      console.log( "BoxView.selectMovie", this.model.get( "title" ) );
+      console.log( "ShowingView.selectMovie", this.model.get( "title" ) );
 
-      var movie =
-        ScheduleMonth.movies.find( function( model ){
+      var performance =
+        App.Common.performances.find( function( model ){
           return model.get( "title" ) == this.model.get( "title" );
         }, this);
 
-      movie.set( "selected", true );
+      performance.set( "selected", true );
     },
 
     markAsSelected: function() {

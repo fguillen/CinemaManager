@@ -5,8 +5,8 @@ $(function(){
   App.Router = Backbone.Router.extend({
 
     routes: {
-      "calendar/day/:date":  "calendarDay",
-      "calendar/month/:date":  "calendarMonth"
+      "calendar/day/:date":     "calendarDay",
+      "calendar/month/:date":   "calendarMonth"
     },
 
     calendarDay: function( date ) {
@@ -49,6 +49,40 @@ $(function(){
 
     calendarMonth: function(){
       console.log( "Router.calendarMonth" );
+
+      App.Common.showings =
+        new App.Common.Showings(
+          data.showings
+        );
+
+      App.Common.performances =
+        new App.Common.Performances();
+
+      var performanceTitles = App.Common.showings.pluck( "title" );
+      performanceTitles = _.uniq( performanceTitles );
+
+      _.each( performanceTitles, function( title ){
+        App.Common.performances.add({ title: title });
+      });
+
+      App.Calendar.Month.performancesView =
+        new App.Calendar.Month.PerformancesView({
+          el:         "#performances-list",
+          collection: App.Common.performances
+        });
+
+      App.Calendar.Month.performancesView.render();
+
+      App.Calendar.Month.daysView =
+        new App.Calendar.Month.DaysView({
+          el:     "ul#days",
+          month:  0,
+          year:   2012,
+          cards:  App.Common.showings
+        });
+
+      App.Calendar.Month.daysView.render();
+
       console.log( "Router.calendarMonth END" );
     }
 

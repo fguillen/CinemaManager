@@ -13,25 +13,25 @@
   width: 910px;
 }
 
-#movies-list{
+#performances-list{
   float: left;
   width: 170px;
 }
 
-#movies-list .results {
+#performances-list .results {
   padding: 10px;
 }
 
-#movies-list .results li {
+#performances-list .results li {
   margin-bottom: 10px;
 }
 
-#movies-list .results li.selected {
+#performances-list .results li.selected {
   color: white;
   background-color: #007194;
 }
 
-#movies-list .results li:last-child {
+#performances-list .results li:last-child {
   margin-bottom: 0px;
 }
 
@@ -106,14 +106,14 @@
   margin-bottom: 0px;
 }
 
-#panel .rail .card-box {
+#panel .rail .card-showing {
   position: absolute;
   top: 1px;
   height: 8px;
   background-color: #94D7F1;
 }
 
-#panel .rail .card-box.selected {
+#panel .rail .card-showing.selected {
   position: absolute;
   top: 1px;
   height: 8px;

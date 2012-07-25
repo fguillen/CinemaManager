@@ -1,5 +1,9 @@
 $(function(){
-  ScheduleMonth.DaysView = Backbone.View.extend({
+  App.Calendar.Month.DaysView = Backbone.View.extend({
+    initialize: function(){
+      console.log( "DaysView.initialize", this.options );
+    },
+
     render: function(){
       console.log( "DaysView this.options", this.options );
 
@@ -16,7 +20,7 @@ $(function(){
         var date = new Date( this.options.year, this.options.month, day );
 
         var dayView =
-          new ScheduleMonth.DayView({
+          new App.Calendar.Month.DayView({
             month:  this.options.month,
             year:   this.options.year,
             day:    day,
