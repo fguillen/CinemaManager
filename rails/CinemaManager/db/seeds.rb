@@ -15,19 +15,22 @@ ActiveRecord::Base.transaction do
     performance =
       Performance.create!({
         title:     Faker::Lorem.words( 6 ).join( " " ),
-        duration:  120
+        duration: (60..240).to_a.sample
       })
 
     puts "Creating Showings"
     10.times.map do |index|
       puts "Creating Showing #{index + 1}"
+      time_ini = "#{(17..23).to_a.sample}:#{[10, 20, 30, 40, 50].sample}"
+      time_end = Time.parse( time_ini ) + ( performance.duration * 60 )
+
       showing =
         Showing.create!({
           performance: performance,
           room: Room.all.sample,
           price: 10.20,
-          time_ini: "#{(17..23).to_a.sample}:#{[10, 20, 30, 40, 50].sample}",
-          time_end: "#{(19..23).to_a.sample}:#{[10, 20, 30, 40, 50].sample}",
+          time_ini: time_ini,
+          time_end: time_end.strftime( "%H:%M" ),
           date: Date.parse( "2012-01-#{(1..30).to_a.sample}" )
         })
     end
