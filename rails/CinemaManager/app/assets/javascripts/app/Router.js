@@ -42,7 +42,7 @@ $(function(){
           collection:   App.Calendar.Day.searchResults
         });
 
-      App.Common.showings.fetch({ data: { day: "2012-01-02" } });
+      App.Common.showings.fetch({ data: { day: date } });
 
       console.log( "Router.calendarDay END" );
     },

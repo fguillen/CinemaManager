@@ -24,11 +24,11 @@ ActiveRecord::Base.transaction do
       showing =
         Showing.create!({
           performance: performance,
-          room: Room.first,
+          room: Room.all.sample,
           price: 10.20,
-          time_ini: "17:00",
-          time_end: "18:00",
-          date: Date.parse( "2012-01-02" )
+          time_ini: "#{(17..23).to_a.sample}:#{[10, 20, 30, 40, 50].sample}",
+          time_end: "#{(19..23).to_a.sample}:#{[10, 20, 30, 40, 50].sample}",
+          date: Date.parse( "2012-01-#{(1..30).to_a.sample}" )
         })
     end
   end

@@ -58,6 +58,7 @@ $(function(){
 
     calculatePosition: function(){
       var selector = "#schedule-room-" + this.model.get( "room" ).name + " .schedule-grid ul li[data-time='" + this.model.get( "time_ini" ) + "']";
+      console.log( "ShowingView.calculatePosition.selector", selector );
       var timeElement = $( selector );
 
       this.left     = timeElement.offset().left - $( "#schedules" ).offset().left;
