@@ -1,0 +1,15 @@
+one:
+  performance: 
+  price: 9.99
+  room: 1
+  time_ini: MyString
+  time_end: MyString
+  date: 2012-07-25 17:24:06
+
+two:
+  performance: 
+  price: 9.99
+  room: 1
+  time_ini: MyString
+  time_end: MyString
+  date: 2012-07-25 17:24:06

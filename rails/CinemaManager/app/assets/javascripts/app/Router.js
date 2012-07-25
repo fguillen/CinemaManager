@@ -14,10 +14,8 @@ $(function(){
 
       drawRulers();
 
-      App.Common.showings =
-        new App.Common.Showings(
-          data.showings
-        );
+      App.Common.showings = new App.Common.Showings();
+
 
       console.log( "App.Common.showings.lenght()", App.Common.showings.size() );
 
@@ -43,6 +41,8 @@ $(function(){
           el:           "#search-box .results ul",
           collection:   App.Calendar.Day.searchResults
         });
+
+      App.Common.showings.fetch({ data: { day: "2012-01-02" } });
 
       console.log( "Router.calendarDay END" );
     },

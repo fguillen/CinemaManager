@@ -57,16 +57,16 @@ $(function(){
     },
 
     calculatePosition: function(){
-      var selector = "#schedule-room-" + this.model.get( "room" ) + " .schedule-grid ul li[data-time='" + this.model.get( "time_ini" ) + "']";
+      var selector = "#schedule-room-" + this.model.get( "room" ).name + " .schedule-grid ul li[data-time='" + this.model.get( "time_ini" ) + "']";
       var timeElement = $( selector );
 
       this.left     = timeElement.offset().left - $( "#schedules" ).offset().left;
       this.top      = timeElement.offset().top - $( "#schedules" ).offset().top;;
-      this.height   = this.model.get( "mins" ) * 1;
+      this.height   = this.model.get( "performance" ).duration * 1;
     },
 
     calculateTimes: function( gridElement ){
-      var cardInfo = Maths.calculateCardInfo( gridElement, this.model.get( "mins" ) );
+      var cardInfo = Maths.calculateCardInfo( gridElement, this.model.get( "performance" ).duration );
 
       this.model.set( cardInfo );
 

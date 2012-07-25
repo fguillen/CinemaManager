@@ -147,13 +147,13 @@
 
 
 <script type="text/template" id="template-card">
-  <div class="card box in-rail" id="card-{{ id }}">
+  <div class="card box in-rail" id="card-{{ id }}" data-room-id="{{ room.id }}" data-room-name="{{ room.name }}" data-duration="{{ performance.duration}}">
     <div class="times font-narrow">
       <div class="time time-ini">{{ time_ini }}</div>
       <div class="time time-end">{{ time_end }}</div>
     </div>
 
-    <h2 class="title-2">{{ title }}</h2>
+    <h2 class="title-2">{{ performance.title }}</h2>
   </div>
 </script>
 
@@ -164,8 +164,8 @@
 </script>
 
 <script type="text/template" id="template-selected-info">
-  <div class="box" id="card-{{ id }}">
-    <h2 class="title-2">{{ title }}</h2>
+  <div class="box" id="card-{{ id }}" data-room-id="{{ room.id }}" data-room-name="{{ room.name }}">
+    <h2 class="title-2">{{ performance.title }}</h2>
   </div>
 
   <div id="fare" class="box">
@@ -176,7 +176,7 @@
   <div id="session" class="box">
     <h1 class="title-1">Room {{ room }}</h1>
     <div id="schedule">
-      <div id="minutes" class="font-narrow">+{{ mins }} min</div>
+      <div id="minutes" class="font-narrow">+{{ performance.duration }} min</div>
       <div id="times">
         <input class="input-box" type="text" value="{{ time_ini }}" />
         <input class="input-box" type="text" value="{{ time_end }}" />

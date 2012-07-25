@@ -1,4 +1,6 @@
 CinemaManager::Application.routes.draw do
+  resources :showings
+
   resources :performances do
     collection do
       get "search"
@@ -8,6 +10,12 @@ CinemaManager::Application.routes.draw do
 
   match '/calendar/day/:date' => 'calendars#day', :as => :calendar_day
   match '/calendar/month/:date' => 'calendars#month', :as => :calendar_month
+
+  namespace :api do
+    resources :showings, :only => [:index, :create, :update, :destroy] do
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

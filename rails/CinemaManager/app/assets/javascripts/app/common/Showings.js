@@ -1,6 +1,6 @@
 $(function(){
   App.Common.Showings = Backbone.Collection.extend({
-    url: "/showings",
+    url: "/api/showings",
 
     model: App.Common.Showing,
 

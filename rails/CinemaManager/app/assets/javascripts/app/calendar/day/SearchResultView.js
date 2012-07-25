@@ -20,7 +20,7 @@ $(function(){
           console.log( "---start---", event, ui, this );
           ui.helper.find(".box").css({
             "width": "100px",
-            "height": _self.model.get( "mins" ) * 1
+            "height": _self.model.get( "performance" ).duration * 1
           });
         },
 
@@ -37,8 +37,9 @@ $(function(){
         return true;
       } else {
         var showingInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "mins" ) );
-        showingInfo.title = this.model.get( "title" );
-        showingInfo.mins = this.model.get( "mins" );
+        showingInfo.performance = {}
+        showingInfo.performance.title = this.model.get( "title" );
+        showingInfo.performance.duration = this.model.get( "duration" );
         showingInfo.id = Math.random(1000);
         showingInfo.price = "6,50";
 

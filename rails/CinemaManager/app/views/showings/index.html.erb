@@ -1,0 +1,27 @@
+<% title "Showings" %>
+
+<table>
+  <tr>
+    <th>Performance</th>
+    <th>Price</th>
+    <th>Room</th>
+    <th>Time Ini</th>
+    <th>Time End</th>
+    <th>Date</th>
+  </tr>
+  <% for showing in @showings %>
+    <tr>
+      <td><%= showing.performance %></td>
+      <td><%= showing.price %></td>
+      <td><%= showing.room %></td>
+      <td><%= showing.time_ini %></td>
+      <td><%= showing.time_end %></td>
+      <td><%= showing.date %></td>
+      <td><%= link_to "Show", showing %></td>
+      <td><%= link_to "Edit", edit_showing_path(showing) %></td>
+      <td><%= link_to "Destroy", showing, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Showing", new_showing_path %></p>

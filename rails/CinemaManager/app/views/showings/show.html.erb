@@ -1,0 +1,32 @@
+<% title "Showing" %>
+
+<p>
+  <strong>Performance:</strong>
+  <%= @showing.performance %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @showing.price %>
+</p>
+<p>
+  <strong>Room:</strong>
+  <%= @showing.room %>
+</p>
+<p>
+  <strong>Time Ini:</strong>
+  <%= @showing.time_ini %>
+</p>
+<p>
+  <strong>Time End:</strong>
+  <%= @showing.time_end %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @showing.date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_showing_path(@showing) %> |
+  <%= link_to "Destroy", @showing, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", showings_path %>
+</p>

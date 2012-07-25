@@ -23,25 +23,25 @@ $(function(){
 
       this.$el.attr({
         "data-time": this.model.get( "time_ini" ),
-        "data-mins": this.model.get( "mins" ),
+        "data-mins": this.model.get( "performance" ).duration,
         "data-card-id": this.model.get( "id" ),
       })
 
       this.$el.css({
         "width": 20,
         "left": minIni * minPixels,
-        "width": this.model.get( "mins" ) * minPixels
+        "width": this.model.get( "performance" ).duration * minPixels
       });
 
       return this;
     },
 
     selectMovie: function(){
-      console.log( "ShowingView.selectMovie", this.model.get( "title" ) );
+      console.log( "ShowingView.selectMovie", this.model.get( "performance" ).title );
 
       var performance =
         App.Common.performances.find( function( model ){
-          return model.get( "title" ) == this.model.get( "title" );
+          return model.get( "title" ) == this.model.get( "performance" ).title;
         }, this);
 
       performance.set( "selected", true );
