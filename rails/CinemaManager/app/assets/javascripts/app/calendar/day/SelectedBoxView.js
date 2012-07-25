@@ -1,5 +1,5 @@
 $(function(){
-  Schedule.SelectedBoxView = Backbone.View.extend({
+  App.Calendar.Day.SelectedBoxView = Backbone.View.extend({
     template: _.template( $("#template-selected-info").html() ),
 
     events: {

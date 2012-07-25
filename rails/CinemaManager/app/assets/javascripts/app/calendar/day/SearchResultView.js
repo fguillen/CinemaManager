@@ -1,5 +1,5 @@
 $(function(){
-  Schedule.SearchResultView = Backbone.View.extend({
+  App.Calendar.Day.SearchResultView = Backbone.View.extend({
     tagName: "li",
 
     template: _.template( $("#template-search-result").html() ),

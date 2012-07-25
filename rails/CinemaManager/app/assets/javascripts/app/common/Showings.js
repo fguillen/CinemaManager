@@ -1,10 +1,11 @@
 $(function(){
-  Schedule.Cards = Backbone.Collection.extend({
-    url: "/cards",
+  App.Common.Showings = Backbone.Collection.extend({
+    url: "/showings",
 
-    model: Schedule.Card,
+    model: App.Common.Showing,
 
     initialize: function(){
+      console.log( "Showings.initialize" );
       this.on( "app:has_been_selected", this.unmarkOtherSelected );
     },
 
@@ -14,7 +15,7 @@ $(function(){
           return ( moment( date ).format( "YYYY-MM-DD" ) == model.get( "date" ) );
         });
 
-      var resultCollection = new Schedule.Cards( result );
+      var resultCollection = new App.Common.Showings( result );
 
       return resultCollection;
     },

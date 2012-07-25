@@ -1,5 +1,5 @@
 $(function(){
-  Schedule.CardView = Backbone.View.extend({
+  App.Calendar.Day.ShowingView = Backbone.View.extend({
     template: _.template( $("#template-card").html() ),
 
 

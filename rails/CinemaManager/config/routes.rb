@@ -5,11 +5,8 @@ CinemaManager::Application.routes.draw do
     end
   end
 
-  resource :calendar do
-    collection do
-      get "week"
-    end
-  end
+
+  match '/calendar/day/:date' => 'calendars#day', :as => :calendar_day
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -145,39 +145,39 @@
 
 
 <script type="text/template" id="template-card">
-  <div class="card box in-rail" id="card-<%= id %>">
+  <div class="card box in-rail" id="card-{{ id }}">
     <div class="times font-narrow">
-      <div class="time time-ini"><%= time_ini %></div>
-      <div class="time time-end"><%= time_end %></div>
+      <div class="time time-ini">{{ time_ini }}</div>
+      <div class="time time-end">{{ time_end }}</div>
     </div>
 
-    <h2 class="title-2"><%= title %></h2>
+    <h2 class="title-2">{{ title }}</h2>
   </div>
 </script>
 
 <script type="text/template" id="template-search-result">
-  <div class="box" id="card-search-<%= id %>">
-    <h2 class="title-2"><%= title %></h2>
+  <div class="box" id="card-search-{{ id }}">
+    <h2 class="title-2">{{ title }}</h2>
   </div>
 </script>
 
 <script type="text/template" id="template-selected-info">
-  <div class="box" id="card-<%= id %>">
-    <h2 class="title-2"><%= title %></h2>
+  <div class="box" id="card-{{ id }}">
+    <h2 class="title-2">{{ title }}</h2>
   </div>
 
   <div id="fare" class="box">
     <span class="font-narrow">Price</span>
-    <input class="input-box" type="text" value="<%= price %>" /> €
+    <input class="input-box" type="text" value="{{ price }}" /> €
   </div>
 
   <div id="session" class="box">
-    <h1 class="title-1">Room <%= room %></h1>
+    <h1 class="title-1">Room {{ room }}</h1>
     <div id="schedule">
-      <div id="minutes" class="font-narrow">+<%= mins %> min</div>
+      <div id="minutes" class="font-narrow">+{{ mins }} min</div>
       <div id="times">
-        <input class="input-box" type="text" value="<%= time_ini %>" />
-        <input class="input-box" type="text" value="<%= time_end %>" />
+        <input class="input-box" type="text" value="{{ time_ini }}" />
+        <input class="input-box" type="text" value="{{ time_end }}" />
       </div>
     </div>
   </div> <!-- session -->

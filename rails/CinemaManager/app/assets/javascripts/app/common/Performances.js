@@ -1,6 +1,6 @@
 $(function(){
-  ScheduleMonth.Movies = Backbone.Collection.extend({
-    model: ScheduleMonth.Movie,
+  App.Common.Performances = Backbone.Collection.extend({
+    model: App.Common.Performance,
 
     initialize: function(){
       this.on( "app:has_been_selected", this.hasBeenSelected );
@@ -9,12 +9,12 @@ $(function(){
 
     hasBeenSelected: function( model ){
       this.unmarkOtherSelected( model );
-      ScheduleMonth.cards.unmarkMovieSelected();
-      ScheduleMonth.cards.markMovieSelected( model.get( "title" ) );
+      App.Common.showings.unmarkMovieSelected();
+      App.Common.showings.markMovieSelected( model.get( "title" ) );
     },
 
     hasBeenUnselected: function( model ){
-      ScheduleMonth.cards.unmarkMovieSelected();
+      App.Common.showings.unmarkMovieSelected();
     },
 
     unmarkOtherSelected: function( model ){

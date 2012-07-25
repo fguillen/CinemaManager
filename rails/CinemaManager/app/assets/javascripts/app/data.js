@@ -1,6 +1,6 @@
 var data = {}
 
-data.cards = [
+data.showings = [
   {
     "id": 1,
     "title": "No es país para viejos 1",

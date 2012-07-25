@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <title>Schedule Manager – Month</title>
+  <link href="./reset.css" rel="stylesheet" type="text/css">
+  <link href="./style.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href='./css/fonts/iconic_fill.css' type='text/css' media='screen'>
+
+  <link href="./style_month.css" rel="stylesheet" type="text/css">
+
+
+
+  <script type="text/javascript" src="./js/libs/jquery.js"></script>
+  <script type="text/javascript" src="./js/libs/jquery-ui.js"></script>
+  <script type="text/javascript" src="./js/libs/sprintf.js"></script>
+  <script type="text/javascript" src="./js/libs/underscore.js"></script>
+  <script type="text/javascript" src="./js/libs/backbone.js"></script>
+  <script type="text/javascript" src="./js/libs/moment.js"></script>
+
+  <script type="text/javascript" src="./js/app/Maths.js"></script>
+
+
+
+  <script type="text/javascript" src="./js/app/month/Schedule.js"></script>
+  <script type="text/javascript" src="./js/app/month/ScheduleMonth.js"></script>
+
+  <script type="text/javascript" src="./js/app/common/Card.js"></script>
+  <script type="text/javascript" src="./js/app/common/Cards.js"></script>
+
+  <script type="text/javascript" src="./js/app/month/data_month.js"></script>
+
+  <script type="text/javascript" src="./js/app/month/Movie.js"></script>
+  <script type="text/javascript" src="./js/app/month/Movies.js"></script>
+  <script type="text/javascript" src="./js/app/month/MovieView.js"></script>
+  <script type="text/javascript" src="./js/app/month/MoviesView.js"></script>
+
+  <script type="text/javascript" src="./js/app/month/DayView.js"></script>
+  <script type="text/javascript" src="./js/app/month/DaysView.js"></script>
+  <script type="text/javascript" src="./js/app/month/BoxView.js"></script>
+
+  <script type="text/javascript" src="./js/app/month/ScheduleMonthLoad.js"></script>
+
+</head>
+<body>
+  <div id="wrapper">
+    <div id="movies-list">
+      <div class="header box">
+        <h1 class="title-1">Movies</h1>
+      </div>
+      <div class="results framed-box">
+        <ul>
+        </ul>
+      </div>
+    </div> <!-- movies-list -->
+
+    <div id="panel">
+      <div class="header">
+        <a href="#montless"><span class="iconic arrow_left"></span></a>
+        April of 2012
+        <a href="#monthmore"><span class="iconic arrow_right"></span></a>
+      </div>
+
+      <div class="content">
+        <ul id="day-names">
+          <li>Monday</li>
+          <li>Tuesday</li>
+          <li>Wednesday</li>
+          <li>Thursday</li>
+          <li>Friday</li>
+          <li>Saturday</li>
+          <li>Sunday</li>
+        </ul>
+
+        <ul id="days">
+
+
+        </ul>
+      </div> <!-- content -->
+    </div><!-- panel -->
+
+  </div><!-- wrapper -->
+
+
+
+<script type="text/template" id="template-day">
+  <div class="header box">
+    <div class="number"><%= day %></div>
+    <div class="icon"><a href="schedule.html"><span class="iconic fullscreen"></span></a></div>
+  </div>
+  <div class="rails framed-box">
+    <ul>
+      <li class="rail" data-room="1"></li>
+      <li class="rail" data-room="2"></li>
+      <li class="rail" data-room="3"></li>
+      <li class="rail" data-room="4"></li>
+    </ul>
+  </div>
+</script>
+
+<script type="text/template" id="template-movie">
+  <%= title %>
+</script>
+

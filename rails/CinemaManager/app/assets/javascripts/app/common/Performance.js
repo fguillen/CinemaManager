@@ -1,5 +1,5 @@
 $(function(){
-  ScheduleMonth.Movie = Backbone.Model.extend({
+  App.Common.Performance = Backbone.Model.extend({
     initialize: function(){
       this.set({ "selected": false });
       this.on( "change:selected", this.changeSelected );

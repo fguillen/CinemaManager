@@ -1,5 +1,5 @@
 $(function(){
-  Schedule.Card = Backbone.Model.extend({
+  App.Common.Showing = Backbone.Model.extend({
     initialize: function(){
       this.set({ "selected": false });
       this.set({ "movie-selected": false });

@@ -15,18 +15,25 @@
 //= require libs/sprintf.js
 //= require libs/underscore.js
 //= require libs/backbone.js
-//= require app/schedule/data.js
-//= require app/Maths.js
-//= require app/schedule/Schedule.js
-//= require app/common/Card.js
-//= require app/common/Cards.js
-//= require app/schedule/CardView.js
-//= require app/schedule/CardsView.js
-//= require app/schedule/SearchResult.js
-//= require app/schedule/SearchResults.js
-//= require app/schedule/SearchResultView.js
-//= require app/schedule/SearchResultsView.js
-//= require app/schedule/SelectedBoxView.js
-//= require app/schedule/ScheduleLoad.js
-
 //= require jquery_ujs
+//= require app/config.js
+//= require app/Maths.js
+//= require app/data.js
+//= require app/App.js
+//= require app/Router.js
+
+//= require app/common/Performance.js
+//= require app/common/Performances.js
+//= require app/common/Showing.js
+//= require app/common/Showings.js
+
+//= require app/calendar/day/ShowingView.js
+//= require app/calendar/day/ShowingsView.js
+//= require app/calendar/day/SearchResult.js
+//= require app/calendar/day/SearchResults.js
+//= require app/calendar/day/SearchResultView.js
+//= require app/calendar/day/SearchResultsView.js
+//= require app/calendar/day/SelectedBoxView.js
+
+//= require app/AppStart.js
+
