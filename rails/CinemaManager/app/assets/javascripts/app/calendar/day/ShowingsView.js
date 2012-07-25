@@ -3,8 +3,6 @@ $(function(){
     initialize: function( opts ){
       this.collection.on( 'reset', this.addAll, this );
       this.collection.on( 'add', this.addOne, this );
-
-      this.addAll();
     },
 
     addOne: function( model ){
@@ -15,8 +13,5 @@ $(function(){
     addAll: function(){
       this.collection.each( $.proxy( this.addOne, this ) );
     },
-
-
-
   });
 });

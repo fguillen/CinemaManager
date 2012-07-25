@@ -3,5 +3,5 @@
 //= require app/calendar/day/SearchResult.js
 //= require app/calendar/day/SearchResults.js
 //= require app/calendar/day/SearchResultView.js
-//= require app/calendar/day/SearchResultsView.js
+//= require app/calendar/day/SearchView.js
 //= require app/calendar/day/SelectedBoxView.js

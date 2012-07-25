@@ -41,8 +41,4 @@ class PerformancesController < ApplicationController
     redirect_to performances_url, :notice => "Successfully destroyed performance."
   end
 
-  def search
-    @performances = Performance.search( :title_contains => params["q"] ).all
-    render :json => @performances
-  end
 end

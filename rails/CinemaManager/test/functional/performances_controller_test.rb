@@ -51,43 +51,4 @@ class PerformancesControllerTest < ActionController::TestCase
     assert_redirected_to performances_url
     assert !Performance.exists?(performance.id)
   end
-
-  def test_search_1
-    performance_1 = FactoryGirl.create( :performance, :title => "title1 cat dog" )
-    performance_2 = FactoryGirl.create( :performance, :title => "title1 fish rinoceronte" )
-
-    get(
-      :search,
-      :q => "title1"
-    )
-
-    assert_equal( "application/json", response.content_type )
-    assert_equal( 2, JSON.load( response.body ).size )
-  end
-
-  def test_search_2
-    performance_1 = FactoryGirl.create( :performance, :title => "title1 cat dog" )
-    performance_2 = FactoryGirl.create( :performance, :title => "title1 fish rinoceronte" )
-
-    get(
-      :search,
-      :q => "cat"
-    )
-
-    assert_equal( "application/json", response.content_type )
-    assert_equal( 1, JSON.load( response.body ).size )
-  end
-
-  def test_search_3
-    performance_1 = FactoryGirl.create( :performance, :title => "title1 cat dog fish" )
-    performance_2 = FactoryGirl.create( :performance, :title => "title1 fish rinoceronte" )
-
-    get(
-      :search,
-      :q => "fish"
-    )
-
-    assert_equal( "application/json", response.content_type )
-    assert_equal( 2, JSON.load( response.body ).size )
-  end
 end

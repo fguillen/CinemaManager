@@ -4,7 +4,7 @@
   <div id="search-box">
     <div class="header box">
       <h1 class="title-1">Search</h1>
-      <input class="input-box big" type="text" placeholder="movie title" />
+      <input id="performances-query" class="input-box big" type="text" placeholder="movie title" />
     </div>
 
     <div class="results framed-box">
@@ -32,7 +32,7 @@
       </div>
 
       <div id="schedules">
-        <div class="schedule" id="schedule-room-1" data-room="1">
+        <div class="schedule" id="schedule-room-1" data-room-name="1">
           <h1 class="title-1">
             Room 1
           </h1>
@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        <div class="schedule" id="schedule-room-2" data-room="2">
+        <div class="schedule" id="schedule-room-2" data-room-name="2">
           <h1 class="title-1">
             Room 2
           </h1>
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="schedule" id="schedule-room-3" data-room="3">
+        <div class="schedule" id="schedule-room-3" data-room-name="3">
           <h1 class="title-1">
             Room 3
           </h1>
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="schedule" id="schedule-room-4" data-room="4">
+        <div class="schedule" id="schedule-room-4" data-room-name="4">
           <h1 class="title-1">
             Room 4
           </h1>
@@ -174,7 +174,7 @@
   </div>
 
   <div id="session" class="box">
-    <h1 class="title-1">Room {{ room }}</h1>
+    <h1 class="title-1">Room {{ room.name }}</h1>
     <div id="schedule">
       <div id="minutes" class="font-narrow">+{{ performance.duration }} min</div>
       <div id="times">

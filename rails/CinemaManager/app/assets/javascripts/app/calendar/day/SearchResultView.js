@@ -18,9 +18,11 @@ $(function(){
 
         start: function( event, ui ){
           console.log( "---start---", event, ui, this );
+          console.log( "XXX1", _self.model );
+
           ui.helper.find(".box").css({
             "width": "100px",
-            "height": _self.model.get( "performance" ).duration * 1
+            "height": _self.model.get( "duration" ) * 1
           });
         },
 
@@ -36,7 +38,7 @@ $(function(){
       if( droppableObj === false ) {
         return true;
       } else {
-        var showingInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "mins" ) );
+        var showingInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "duration" ) );
         showingInfo.performance = {}
         showingInfo.performance.title = this.model.get( "title" );
         showingInfo.performance.duration = this.model.get( "duration" );

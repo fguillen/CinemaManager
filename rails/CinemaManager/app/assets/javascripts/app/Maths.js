@@ -1,17 +1,23 @@
 var Maths = {};
 
-Maths.calculateCardInfo = function( gridElement, mins ){
+Maths.calculateCardInfo = function( gridElement, duration ){
+  console.log( "Maths.calculateCardInfo.gridElement", gridElement );
+  console.log( "Maths.calculateCardInfo.duration", duration );
+
   var dateObj     = new Date( Date.parse( "2012-07-20 " + gridElement.attr( "data-time" ), "MM/dd/yyyy HH:MM" ) );
-  var newDateObj  = new Date( dateObj.getTime() + ( mins * 60000 ) );
+  var newDateObj  = new Date( dateObj.getTime() + ( duration * 60000 ) );
 
   var time_ini  = gridElement.attr( "data-time" );
   var time_end  = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
-  var room      = gridElement.parents(".schedule").attr( "data-room" );
+  var room_name = gridElement.parents(".schedule").attr( "data-room-name" );
+
+  console.log( "Maths.calculateCardInfo.parent", gridElement.parents(".schedule") );
+  console.log( "Maths.calculateCardInfo.room_name", room_name );
 
   var result = {
     "time_ini": time_ini,
     "time_end": time_end,
-    "room":     room
+    "room":     { name: room_name }
   }
 
   return result;

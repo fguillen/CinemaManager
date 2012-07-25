@@ -14,7 +14,8 @@ $(function(){
 
       drawRulers();
 
-      App.Common.showings = new App.Common.Showings();
+      App.Common.showings =
+        new App.Common.Showings();
 
 
       console.log( "App.Common.showings.lenght()", App.Common.showings.size() );
@@ -32,13 +33,11 @@ $(function(){
         });
 
       App.Calendar.Day.searchResults =
-        new App.Calendar.Day.SearchResults(
-          data.search_results
-        );
+        new App.Calendar.Day.SearchResults();
 
       App.Calendar.Day.searchResultsView =
-        new App.Calendar.Day.SearchResultsView({
-          el:           "#search-box .results ul",
+        new App.Calendar.Day.SearchView({
+          el:           "#search-box",
           collection:   App.Calendar.Day.searchResults
         });
 
