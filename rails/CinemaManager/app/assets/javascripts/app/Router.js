@@ -54,23 +54,15 @@ $(function(){
       console.log( "Router.calendarDay END" );
     },
 
-    calendarMonth: function(){
-      console.log( "Router.calendarMonth" );
+    calendarMonth: function( date ){
+      console.log( "Router.calendarMonth", date );
 
       App.Common.showings =
         new App.Common.Showings(
-          data.showings
         );
 
       App.Common.performances =
         new App.Common.Performances();
-
-      var performanceTitles = App.Common.showings.pluck( "title" );
-      performanceTitles = _.uniq( performanceTitles );
-
-      _.each( performanceTitles, function( title ){
-        App.Common.performances.add({ title: title });
-      });
 
       App.Calendar.Month.performancesView =
         new App.Calendar.Month.PerformancesView({
@@ -78,17 +70,38 @@ $(function(){
           collection: App.Common.performances
         });
 
-      App.Calendar.Month.performancesView.render();
-
       App.Calendar.Month.daysView =
         new App.Calendar.Month.DaysView({
-          el:     "ul#days",
-          month:  0,
-          year:   2012,
-          cards:  App.Common.showings
+          el:       "ul#days",
+          date:      date,
+          showings:  App.Common.showings
         });
 
-      App.Calendar.Month.daysView.render();
+
+      App.Common.showings.fetch({
+        data: { month: date },
+        success: function(){
+          var performanceTitles =
+            App.Common.showings.map( function( model ){
+              return model.get( "performance" ).title;
+            });
+
+          performanceTitles = _.uniq( performanceTitles );
+
+          console.log( "performances titles" );
+          _.each( performanceTitles, function( title ){
+            console.log( "performance.title", title );
+            App.Common.performances.add({ title: title });
+          });
+
+          App.Calendar.Month.daysView.render();
+          App.Calendar.Month.performancesView.render();
+
+        }
+      });
+
+
+
 
       console.log( "Router.calendarMonth END" );
     }

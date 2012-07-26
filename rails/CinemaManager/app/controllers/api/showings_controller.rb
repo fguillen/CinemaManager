@@ -2,8 +2,15 @@ class Api::ShowingsController < ApplicationController
   layout false
 
   def index
-    @showings = Showing.where( :date => params[:day] ).all
-    render :json => @showings.map( &:to_hash )
+    if( params[:month] )
+      date_ini = Date.parse( "#{params[:month]}-01" )
+      date_end = date_ini.to_time.advance( :months => 1 ).to_date
+      showings = Showing.where( :date => date_ini..date_end ).all
+    else
+      showings = Showing.where( :date => params[:day] ).all
+    end
+
+    render :json => showings.map( &:to_hash )
   end
 
   def create

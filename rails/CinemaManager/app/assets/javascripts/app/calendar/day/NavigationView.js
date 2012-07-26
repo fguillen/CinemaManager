@@ -3,6 +3,7 @@ $(function(){
     events: {
       "click a.day-less": "dayLess",
       "click a.day-more": "dayMore",
+      "click a.month-view": "monthView"
     },
 
     render: function(){
@@ -30,6 +31,13 @@ $(function(){
       this.options.date = dateFormatted;
       this.render();
       App.router.navigate("/calendar/day/" + dateFormatted, {trigger: true, replace: true});
+    },
+
+    monthView: function( event ){
+      console.log( "NavigationView.monthView" );
+      event.preventDefault();
+      var dateMonthFormatted = moment( this.options.date ).format('YYYY-MM');
+      window.location.href = "/calendar/month/" + dateMonthFormatted;
     }
   });
 });

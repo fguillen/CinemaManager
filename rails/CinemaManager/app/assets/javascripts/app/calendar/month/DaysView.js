@@ -5,9 +5,9 @@ $(function(){
     },
 
     render: function(){
-      console.log( "DaysView this.options", this.options );
+      console.log( "DaysView.render this.options", this.options );
 
-      var monthInfo = Maths.monthInfo( this.options.month, this.options.year );
+      var monthInfo = Maths.monthInfo( this.options.date.split("-")[0], this.options.date.split("-")[1] );
 
       console.log( "monthInfo", monthInfo );
 
@@ -17,14 +17,12 @@ $(function(){
       }
 
       for( var day = 1; day <= monthInfo.numDays; day++ ){
-        var date = new Date( this.options.year, this.options.month, day );
+        var date = this.options.date + "-" + sprintf( "%02d", day );
 
         var dayView =
           new App.Calendar.Month.DayView({
-            month:  this.options.month,
-            year:   this.options.year,
-            day:    day,
-            cards:  this.options.cards.filterByDate( date )
+            date:     date,
+            showings: this.options.showings.filterByDate( date )
           });
 
         this.$el.append( dayView.render().el );

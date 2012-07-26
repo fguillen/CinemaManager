@@ -12,7 +12,7 @@ $(function(){
     filterByDate: function( date ){
       var result =
         this.filter( function( model ){
-          return ( moment( date ).format( "YYYY-MM-DD" ) == model.get( "date" ) );
+          return ( date == model.get( "date" ) );
         });
 
       var resultCollection = new App.Common.Showings( result );
@@ -30,7 +30,7 @@ $(function(){
 
     markMovieSelected: function( title ){
       this.each( function( currentModel ){
-        if( currentModel.get( "title" ) == title ) {
+        if( currentModel.get( "performance" ).title == title ) {
           currentModel.set({ "movie_selected": true });
         }
       });

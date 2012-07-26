@@ -5,18 +5,20 @@ $(function(){
     template: _.template( $("#template-day").html() ),
 
     initialize: function(){
-      console.log( "DayView.initialize", this.options.day );
-      console.log( "DayView.initialize.movies", this.options.cards.size() );
-      this.$el.attr( "data-month", this.options.month );
-      this.$el.attr( "data-day", this.options.day );
+      console.log( "DayView.initialize", this.options.date );
+      console.log( "DayView.initialize.performances", this.options.showings.size() );
+      this.$el.attr( "data-month", this.options.date.split("-")[0] );
+      this.$el.attr( "data-day", this.options.date.split("-")[1] );
     },
 
     render: function(){
-      this.$el.html( this.template({ day: sprintf( "%02d", this.options.day ), }) );
+      this.$el.html( this.template({ day: this.options.date.split("-")[2] }) );
 
-      this.options.cards.each( function( card ){
-        var boxView = new App.Calendar.Month.ShowingView({ model: card });
-        this.$el.find( ".rail[data-room='" + card.get( "room" ) + "']").append( boxView.render().el );
+      this.options.showings.each( function( showing ){
+        var boxView = new App.Calendar.Month.ShowingView({ model: showing });
+        var selector = ".rail[data-room-name='" + showing.get( "room" ).name + "']";
+        console.log( "DayView.render.selector", selector );
+        this.$el.find( selector ).append( boxView.render().el );
       }, this);
 
       return this;
