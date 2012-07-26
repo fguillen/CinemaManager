@@ -17,8 +17,12 @@ $(function(){
       App.Common.showings =
         new App.Common.Showings();
 
-
-      console.log( "App.Common.showings.lenght()", App.Common.showings.size() );
+      App.Calendar.Day.navigationView =
+        new App.Calendar.Day.NavigationView({
+          el: "#navigation",
+          date: date
+        });
+      App.Calendar.Day.navigationView.render();
 
       App.Calendar.Day.showingsView =
         new App.Calendar.Day.ShowingsView({
