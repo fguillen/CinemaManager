@@ -1,0 +1,18 @@
+{
+  "date" : "2012-01-16",
+  "id" : 179,
+  "movie-selected" : false,
+  "performance" : { "card" : null,
+      "duration" : 124,
+      "id" : 18,
+      "synopsis" : null,
+      "title" : "inventore quisquam omnis et neque earum",
+      "title_original" : null,
+      "year" : null
+    },
+  "price" : "10.2",
+  "room" : { "name" : "2" },
+  "selected" : true,
+  "time_end" : "20:34",
+  "time_ini" : "18:30"
+}

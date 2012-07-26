@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :room do
+    sequence(:name) { |n| "Name #{n}" }
   end
 
   factory :performance do
