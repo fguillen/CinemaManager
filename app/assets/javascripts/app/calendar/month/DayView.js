@@ -12,7 +12,12 @@ $(function(){
     },
 
     render: function(){
-      this.$el.html( this.template({ day: this.options.date.split("-")[2] }) );
+      this.$el.html(
+        this.template({
+          day:  this.options.date.split("-")[2],
+          date: this.options.date
+        })
+      );
 
       this.options.showings.each( function( showing ){
         var boxView = new App.Calendar.Month.ShowingView({ model: showing });
