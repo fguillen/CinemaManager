@@ -14,4 +14,8 @@ class Api::ShowingsControllerTest < ActionController::TestCase
     assert_equal( "application/json", response.content_type )
     assert_equal( 2, JSON.load( response.body ).size )
   end
+
+  def test_update
+
+  end
 end

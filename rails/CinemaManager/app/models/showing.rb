@@ -1,5 +1,12 @@
 class Showing < ActiveRecord::Base
-  attr_accessible :performance, :price, :room, :time_ini, :time_end, :date
+  attr_accessible(
+    :performance_id,
+    :price,
+    :room_id,
+    :time_ini,
+    :time_end,
+    :date
+  )
 
   belongs_to :performance
   belongs_to :room

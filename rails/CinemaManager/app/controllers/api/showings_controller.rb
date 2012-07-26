@@ -1,4 +1,6 @@
 class Api::ShowingsController < ApplicationController
+  layout false
+
   def index
     @showings = Showing.where( :date => params[:day] ).all
     render :json => @showings.map( &:to_hash )
@@ -14,11 +16,15 @@ class Api::ShowingsController < ApplicationController
   end
 
   def update
-    @showing = Showing.find(params[:id])
-    if @showing.update_attributes(params[:showing])
-      redirect_to @showing, :notice  => "Successfully updated showing."
+    showing = Showing.find(params[:id])
+
+    valid_params = params.slice( *Showing.accessible_attributes.to_a )
+    valid_params[ :room_id ] = Room.find_by_name( params[:room][:name] ).id
+
+    if showing.update_attributes( valid_params )
+      render :json => showing.to_hash
     else
-      render :action => 'edit'
+      render :status => 500
     end
   end
 

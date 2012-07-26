@@ -1,7 +1,7 @@
 ActiveRecord::Base.transaction do
 
   puts "Creating Rooms"
-  3.times.map do |index|
+  4.times.map do |index|
     puts "Creating Room #{index + 1}"
     room =
       Room.create!({
@@ -26,8 +26,8 @@ ActiveRecord::Base.transaction do
 
       showing =
         Showing.create!({
-          performance: performance,
-          room: Room.all.sample,
+          performance_id: performance.id,
+          room_id: Room.all.sample.id,
           price: 10.20,
           time_ini: time_ini,
           time_end: time_end.strftime( "%H:%M" ),

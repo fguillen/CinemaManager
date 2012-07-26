@@ -18,6 +18,8 @@
 //= require libs/backbone.js
 //= require jquery_ujs
 //= require app/config.js
+//= require app/loading.js
+//= require app/ajax_events.js
 //= require app/Maths.js
 //= require app/data.js
 //= require app/App.js

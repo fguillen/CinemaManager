@@ -52,6 +52,7 @@ $(function(){
         console.log( "droppen on", droppableObj );
         this.calculateTimes( droppableObj );
         this.model.trigger( "app:dropped", this.model );
+        this.model.save();
         return false;
       }
     },
@@ -69,7 +70,11 @@ $(function(){
     calculateTimes: function( gridElement ){
       var cardInfo = Maths.calculateCardInfo( gridElement, this.model.get( "performance" ).duration );
 
+      console.log( "cardInfo", cardInfo );
+
+      console.log( "this.model.attributes 1", this.model.attributes );
       this.model.set( cardInfo );
+      console.log( "this.model.attributes 2", this.model.attributes );
 
       this.$el.find( ".time-ini" ).html( this.model.get( "time_ini" ) );
       this.$el.find( ".time-end" ).html( this.model.get( "time_end" ) );
