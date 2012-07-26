@@ -9,9 +9,7 @@ $(function(){
       "calendar/month/:date":   "calendarMonth"
     },
 
-    calendarDay: function( date ) {
-      console.log( "Router.calendarDay", date );
-
+    initDayPage: function( date ){
       drawRulers();
 
       App.Common.showings =
@@ -26,7 +24,7 @@ $(function(){
 
       App.Calendar.Day.showingsView =
         new App.Calendar.Day.ShowingsView({
-          el:           "#schedules",
+          el:           "#showings-store",
           collection:   App.Common.showings
         });
 
@@ -45,6 +43,12 @@ $(function(){
           collection:   App.Calendar.Day.searchResults
         });
 
+    },
+
+    calendarDay: function( date ) {
+      console.log( "Router.calendarDay", date );
+
+      if( !App.Common.showings ) this.initDayPage( date );
       App.Common.showings.fetch({ data: { day: date } });
 
       console.log( "Router.calendarDay END" );

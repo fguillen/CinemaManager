@@ -11,6 +11,7 @@ $(function(){
     },
 
     addAll: function(){
+      this.$el.find( ".card.box" ).remove();
       this.collection.each( $.proxy( this.addOne, this ) );
     },
   });
