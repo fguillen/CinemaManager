@@ -30,7 +30,7 @@ $(function(){
       var dateFormatted = date.format('YYYY-MM-DD');
       this.options.date = dateFormatted;
       this.render();
-      App.router.navigate("/calendar/day/" + dateFormatted, {trigger: true, replace: true});
+      App.router.navigate("/calendar/day/" + dateFormatted, {trigger: true});
     },
 
     monthView: function( event ){

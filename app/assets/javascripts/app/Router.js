@@ -17,10 +17,9 @@ $(function(){
 
       App.Calendar.Day.navigationView =
         new App.Calendar.Day.NavigationView({
-          el: "#navigation",
-          date: date
+          el: "#navigation"
         });
-      App.Calendar.Day.navigationView.render();
+
 
       App.Calendar.Day.showingsView =
         new App.Calendar.Day.ShowingsView({
@@ -95,6 +94,8 @@ $(function(){
 
       if( !App.Calendar.Day.navigationView ) this.initDayPage( date );
 
+      App.Calendar.Day.navigationView.options.date = date;
+      App.Calendar.Day.navigationView.render();
       App.Common.showings.fetch({ data: { day: date } });
 
       console.log( "Router.calendarDay END" );

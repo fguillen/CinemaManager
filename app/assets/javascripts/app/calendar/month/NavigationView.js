@@ -29,7 +29,7 @@ $(function(){
       var dateFormatted = date.format('YYYY-MM');
       this.options.date = dateFormatted;
       this.render();
-      App.router.navigate("/calendar/month/" + dateFormatted, {trigger: true, replace: true});
+      App.router.navigate("/calendar/month/" + dateFormatted, {trigger: true});
     }
   });
 });
