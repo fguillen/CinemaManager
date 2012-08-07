@@ -45,18 +45,7 @@ $(function(){
 
     },
 
-    calendarDay: function( date ) {
-      console.log( "Router.calendarDay", date );
-
-      if( !App.Common.showings ) this.initDayPage( date );
-      App.Common.showings.fetch({ data: { day: date } });
-
-      console.log( "Router.calendarDay END" );
-    },
-
-    calendarMonth: function( date ){
-      console.log( "Router.calendarMonth", date );
-
+    initMonthPage: function( date ){
       App.Common.showings =
         new App.Common.Showings(
         );
@@ -77,31 +66,53 @@ $(function(){
           showings:  App.Common.showings
         });
 
+      App.Calendar.Month.navigationView =
+        new App.Calendar.Month.NavigationView({
+          el: "#navigation"
+        });
+
+    },
+
+    updatePerformancesList: function(){
+      var performanceTitles =
+        App.Common.showings.map( function( model ){
+          return model.get( "performance" ).title;
+        });
+
+      performanceTitles = _.uniq( performanceTitles );
+      var performances = [];
+
+      console.log( "performances titles" );
+      _.each( performanceTitles, function( title ){
+        console.log( "performance.title", title );
+        performances.push({ title: title });
+      });
+
+      App.Common.performances.reset( performances );
+    },
+
+    calendarDay: function( date ) {
+      console.log( "Router.calendarDay", date );
+
+      if( !App.Calendar.Day.navigationView ) this.initDayPage( date );
+
+      App.Common.showings.fetch({ data: { day: date } });
+
+      console.log( "Router.calendarDay END" );
+    },
+
+    calendarMonth: function( date ){
+      console.log( "Router.calendarMonth", date );
+
+      if( !App.Calendar.Month.navigationView ) this.initMonthPage( date );
+
+      App.Calendar.Month.navigationView.options.date = date;
+      App.Calendar.Month.navigationView.render();
 
       App.Common.showings.fetch({
         data: { month: date },
-        success: function(){
-          var performanceTitles =
-            App.Common.showings.map( function( model ){
-              return model.get( "performance" ).title;
-            });
-
-          performanceTitles = _.uniq( performanceTitles );
-
-          console.log( "performances titles" );
-          _.each( performanceTitles, function( title ){
-            console.log( "performance.title", title );
-            App.Common.performances.add({ title: title });
-          });
-
-          App.Calendar.Month.daysView.render();
-          App.Calendar.Month.performancesView.render();
-
-        }
+        success: this.updatePerformancesList
       });
-
-
-
 
       console.log( "Router.calendarMonth END" );
     }

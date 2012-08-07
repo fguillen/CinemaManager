@@ -2,10 +2,13 @@ $(function(){
   App.Calendar.Month.DaysView = Backbone.View.extend({
     initialize: function(){
       console.log( "DaysView.initialize", this.options );
+      this.options.showings.on( 'reset', this.render, this );
     },
 
     render: function(){
       console.log( "DaysView.render this.options", this.options );
+
+      this.$el.empty();
 
       var monthInfo = Maths.monthInfo( this.options.date.split("-")[0], this.options.date.split("-")[1] );
 
