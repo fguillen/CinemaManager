@@ -14,11 +14,12 @@ class Api::ShowingsController < ApplicationController
   end
 
   def create
-    @showing = Showing.new(params[:showing])
-    if @showing.save
-      redirect_to @showing, :notice => "Successfully created showing."
+    showing = Showing.new(params[:showing])
+
+    if showing.save
+      render :json => showing.to_hash
     else
-      render :action => 'new'
+      render :status => 500
     end
   end
 

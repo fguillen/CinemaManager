@@ -7,6 +7,7 @@ Maths.calculateCardInfo = function( gridElement, duration ){
   var dateObj     = new Date( Date.parse( "2012-07-20 " + gridElement.attr( "data-time" ), "MM/dd/yyyy HH:MM" ) );
   var newDateObj  = new Date( dateObj.getTime() + ( duration * 60000 ) );
 
+  var date      = gridElement.attr( "data-date" );
   var time_ini  = gridElement.attr( "data-time" );
   var time_end  = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
   var room_name = gridElement.parents(".schedule").attr( "data-room-name" );
@@ -16,6 +17,7 @@ Maths.calculateCardInfo = function( gridElement, duration ){
   console.log( "Maths.calculateCardInfo.room_name", room_name );
 
   var result = {
+    "date":     date,
     "time_ini": time_ini,
     "time_end": time_end,
     "room":     { id: room_id, name: room_name }

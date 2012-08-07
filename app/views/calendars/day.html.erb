@@ -32,58 +32,21 @@
       </div>
 
       <div id="schedules">
-        <div class="schedule" id="schedule-room-1" data-room-name="1">
-          <h1 class="title-1">
-            Room 1
-          </h1>
+        <% Room.all.each do |room| %>
+          <div class="schedule" id="schedule-room-<%= room.id %>" data-room-id="<%= room.id %>" data-room-name="<%= room.name %>">
+            <h1 class="title-1">
+              Room 1
+            </h1>
 
-          <div class="schedule-rail framed-box">
-            <div class="schedule-grid">
-              <ul>
-              </ul>
-            </div>
+            <div class="schedule-rail framed-box">
+              <div class="schedule-grid">
+                <ul>
+                </ul>
+              </div>
 
-          </div>
-        </div>
-
-        <div class="schedule" id="schedule-room-2" data-room-name="2">
-          <h1 class="title-1">
-            Room 2
-          </h1>
-
-          <div class="schedule-rail framed-box">
-            <div class="schedule-grid">
-              <ul>
-              </ul>
             </div>
           </div>
-        </div>
-
-        <div class="schedule" id="schedule-room-3" data-room-name="3">
-          <h1 class="title-1">
-            Room 3
-          </h1>
-
-          <div class="schedule-rail framed-box">
-            <div class="schedule-grid">
-              <ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="schedule" id="schedule-room-4" data-room-name="4">
-          <h1 class="title-1">
-            Room 4
-          </h1>
-
-          <div class="schedule-rail framed-box">
-            <div class="schedule-grid">
-              <ul>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <% end %>
 
         <div id="showings-store"></div>
       </div>
@@ -105,31 +68,32 @@
   </div> <!-- selected-box -->
 
 
-
 </div>
 
 <script>
 
-  function drawRulers(){
-    var dateIni = "17:00";
-    var dateEnd = "03:00";
-    var dateActual = dateIni;
+  function drawRulers( date ){
+    console.log( "drawRulers.date", date );
 
-    while( dateActual >= dateIni || dateActual <= dateEnd ){
-      var dateObj = new Date( Date.parse( "2012-07-20 " + dateActual,"MM/dd/yyyy HH:MM" ) );
+    var timeIni = "17:00";
+    var timeEnd = "03:00";
+    var timeActual = timeIni;
+
+    while( timeActual >= timeIni || timeActual <= timeEnd ){
+      var dateObj = new Date( Date.parse( date + " " + timeActual,"MM/dd/yyyy HH:MM" ) );
 
       // Ruler li
-      var newRulerLi = $("<li><span>" + dateActual + "</span></li>")
+      var newRulerLi = $("<li><span>" + timeActual + "</span></li>")
       if( dateObj.getMinutes() == 0 ) newRulerLi.addClass( "visible" );
       $("ul.time-ruler").append( newRulerLi );
 
       // Grid elements
-      var newGridElement = $( "<li data-time=\"" + dateActual + "\"></li>" );
+      var newGridElement = $( "<li data-time=\"" + timeActual + "\" data-date=\"" + date + "\"></li>" );
       $(".schedule-grid ul").append( newGridElement );
 
 
       var newDateObj  = new Date( dateObj.getTime() + 10 * 60000 );
-      dateActual      = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
+      timeActual      = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
     }
   }
 

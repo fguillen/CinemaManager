@@ -10,7 +10,7 @@ $(function(){
     },
 
     initDayPage: function( date ){
-      drawRulers();
+      drawRulers( date );
 
       App.Common.showings =
         new App.Common.Showings();
@@ -62,7 +62,6 @@ $(function(){
       App.Calendar.Month.daysView =
         new App.Calendar.Month.DaysView({
           el:       "ul#days",
-          date:      date,
           showings:  App.Common.showings
         });
 
@@ -106,6 +105,7 @@ $(function(){
 
       if( !App.Calendar.Month.navigationView ) this.initMonthPage( date );
 
+      App.Calendar.Month.daysView.options.date = date;
       App.Calendar.Month.navigationView.options.date = date;
       App.Calendar.Month.navigationView.render();
 

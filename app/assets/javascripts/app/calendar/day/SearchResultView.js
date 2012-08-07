@@ -39,15 +39,20 @@ $(function(){
         return true;
       } else {
         var showingInfo = Maths.calculateCardInfo( droppableObj, this.model.get( "duration" ) );
-        showingInfo.performance = {}
-        showingInfo.performance.title = this.model.get( "title" );
-        showingInfo.performance.duration = this.model.get( "duration" );
-        showingInfo.id = Math.random(1000);
-        showingInfo.price = "6,50";
+        var showing =
+          App.Common.showings.create(
+            {
+              performance_id: this.model.get( "id" ),
+              price: "6,50",
+              room_id: showingInfo.room.id,
+              time_ini: showingInfo.time_ini,
+              time_end: showingInfo.time_end,
+              date: showingInfo.date
+            },
+            { wait: true }
+          );
 
-        var showing = new App.Common.Showing( showingInfo )
-        App.Common.showings.add( showing );
-
+        console.log( "revertConfiguration.showing", showing );
 
         showing.set({ "selected": true });
 
