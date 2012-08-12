@@ -13,5 +13,9 @@ CinemaManager::Application.routes.draw do
   namespace :api do
     resources :showings, :only => [:index, :create, :update, :destroy]
     resources :performances, :only => [:index]
+
+    namespace :external_dbs do
+      resources :performances, :only => [:index]
+    end
   end
 end

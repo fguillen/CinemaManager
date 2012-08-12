@@ -16,6 +16,7 @@
 //= require libs/moment.js
 //= require libs/underscore.js
 //= require libs/backbone.js
+//= require libs/bbsearch.js
 //= require jquery_ujs
 //= require app/config.js
 //= require app/loading.js

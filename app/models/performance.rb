@@ -1,3 +1,5 @@
+puts "XXX: loading performance"
+
 class Performance < ActiveRecord::Base
   attr_accessible(
     :title,

@@ -12,6 +12,15 @@
   <body>
     <div id="loading"><%= image_tag "/assets/spinner_min.gif" %></div>
     <div id="container">
+      <div id="menu">
+        <ul>
+          <li><a href="#performances">Performances</a></li>
+          <li><%= link_to "Calendar", calendar_month_url( :date => Time.now.strftime("%Y-%m") ) %></li>
+          <li><a href="#config">Config</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+        </ul>
+      </div>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

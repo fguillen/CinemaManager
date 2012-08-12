@@ -10,7 +10,7 @@ class PerformancesController < ApplicationController
   end
 
   def new
-    @performance = Performance.new
+    @performance = Performance.new({ :year => Time.now.year })
   end
 
   def create

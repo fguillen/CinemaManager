@@ -11,6 +11,7 @@
  *= require_self
  *= require reset
  *= require style
+ *= require menu
  *= require fonts/iconic_fill
  */
 

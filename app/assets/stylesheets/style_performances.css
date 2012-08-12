@@ -1,0 +1,38 @@
+
+.column-left{
+  width: 114px;
+  float: left;
+}
+
+.column-center{
+  margin-left: 10px;
+  width: 476px;
+  float: left;
+}
+
+#poster-drop {
+  margin-top: 10px;
+  padding-top: 20px;
+  text-align: center;
+  height: 150px;
+}
+
+.inline-form label,
+.inline-form input{
+  float: left;
+}
+
+.inline-form label {
+  clear: left;
+  width: 70px;
+}
+
+#performance-form .box {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+#performance-form p {
+  overflow: hidden;
+  margin-bottom: 5px;
+}

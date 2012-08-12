@@ -1,28 +1,59 @@
-<%= form_for @performance do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :synopsis %><br />
-    <%= f.text_area :synopsis %>
-  </p>
-  <p>
-    <%= f.label :title_original %><br />
-    <%= f.text_field :title_original %>
-  </p>
-  <p>
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
-  </p>
-  <p>
-    <%= f.label :duration %><br />
-    <%= f.number_field :duration %>
-  </p>
-  <p>
-    <%= f.label :card %><br />
-    <%= f.text_field :card %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<div id="wrapper" class="performance-new">
+
+  <div class="column-left">
+    <div class="poster box">
+      <h1>Poster</h1>
+      <div id="poster-drop" class="box dark">
+        Drop an image file here
+      </div>
+    </div>
+  </div>
+
+  <div class="column-center" id="performance-form">
+    <%= form_for @performance do |f| %>
+      <%= f.error_messages %>
+
+      <div class="box inline-form">
+        <p>
+          <%= f.label :title %>
+          <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
+          <div id="performance-title-results"></div>
+        </p>
+        <p>
+          <%= f.label :year %>
+          <%= f.number_field :year, :class => "input-box", :style => "padding-right: 5px", :maxlength => "4", :size => "4" %>
+        </p>
+        <p>
+          <%= f.label :director %>
+          <%= f.text_field :director, :id => "performance-director", :class => "input-box", :style => "width: 210px" %>
+        </p>
+        <p>
+          <%= f.label :duration %>
+          <%= f.number_field :duration, :class => "input-box", :style => "padding-right: 5px", :maxlength => "3", :size => "3" %>
+        </p>
+      </div>
+
+      <div class="box">
+        <p>
+          <%= f.label :synopsis %> <br />
+          <%= f.text_area :synopsis %>
+        </p>
+      </div>
+
+      <p><%= f.submit %></p>
+
+    <% end %>
+  </div>
+</div>
+
+<script>
+$(function(){
+  new BBSearch({
+    url: "<%= api_external_dbs_performances_url %>?q=",
+    inputElement: $("#performance-title"),
+    resultsElement: $("#performance-title-results"),
+    itemTemplate: "{{ title }}",
+    onClick: function( model ){ $("#performance-title").val( model.get( "text" ) ) }
+  });
+})
+</script>
