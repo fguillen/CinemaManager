@@ -36,3 +36,13 @@
   overflow: hidden;
   margin-bottom: 5px;
 }
+
+#performance-form .textarea-box {
+  margin-top: 5px;
+  width: 450px;
+  height: 150px;
+}
+
+#performance-title-results {
+  display: none;
+}

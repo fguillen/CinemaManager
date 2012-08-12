@@ -48,9 +48,6 @@ body {
   float: left;
 }
 
-#search-box .results {
-  padding: 10px;
-}
 
 #search-box .results li {
   /*border: 1px solid red;*/
@@ -155,10 +152,13 @@ body {
 }
 
 .framed-box {
+  background-color: white;
+  padding: 10px;
   border: 2px solid #94D7F1;
 }
 
-.input-box {
+.input-box,
+.textarea-box {
   width: 50px;
   text-align: right;
   font-family: "Haettenschweiler";
@@ -167,6 +167,10 @@ body {
   color: #007194;
   padding: 3px;
   border: 0;
+}
+
+.textarea-box {
+  width: 400px;
 }
 
 .input-box.big {

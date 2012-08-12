@@ -17,7 +17,7 @@
         <p>
           <%= f.label :title %>
           <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
-          <div id="performance-title-results"></div>
+          <div id="performance-title-results" class="framed-box"></div>
         </p>
         <p>
           <%= f.label :year %>
@@ -36,7 +36,7 @@
       <div class="box">
         <p>
           <%= f.label :synopsis %> <br />
-          <%= f.text_area :synopsis %>
+          <%= f.text_area :synopsis, :class => "textarea-box" %>
         </p>
       </div>
 
@@ -46,14 +46,26 @@
   </div>
 </div>
 
+<script type="text/template" id="template-result">
+  <div class="box">
+    <h2>{{ title }}</h2>
+  </div>
+</script>
+
 <script>
 $(function(){
   new BBSearch({
     url: "<%= api_external_dbs_performances_url %>?q=",
     inputElement: $("#performance-title"),
     resultsElement: $("#performance-title-results"),
-    itemTemplate: "{{ title }}",
-    onClick: function( model ){ $("#performance-title").val( model.get( "text" ) ) }
+    itemTemplate: $("#template-result").html(),
+    onClick: function( model ){ $("#performance-title").val( model.get( "title" ) ) },
+    onStart: function(){
+      $("#performance-title-results").slideUp( "fast" );
+    },
+    onEnd: function( collection ){
+      if( collection.length > 0 ) $("#performance-title-results").slideDown( "slow" );
+    },
   });
 })
 </script>
