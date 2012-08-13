@@ -1,6 +1,6 @@
 
 .column-left{
-  width: 114px;
+  width: 170px;
   float: left;
 }
 
@@ -14,7 +14,7 @@
   margin-top: 10px;
   padding-top: 20px;
   text-align: center;
-  height: 150px;
+  height: 182px;
 }
 
 .inline-form label,
