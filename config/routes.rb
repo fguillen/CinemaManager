@@ -1,7 +1,5 @@
 CinemaManager::Application.routes.draw do
-  resources :showings
-
-  resources :performances do
+  resources :performances, :except => [:show] do
     collection do
       get "search"
     end

@@ -47,12 +47,18 @@
   display: none;
 }
 
-#performance-title-results li:hover .box{
-  color: white;
-  background-color: #007194;
-  cursor: pointer;
-}
+
 
 .result .director {
   font-style: italic
+}
+
+
+#performances-index{
+  width: 470px;
+}
+
+#controls {
+  padding: 10px;
+  text-align: right;
 }

@@ -49,13 +49,19 @@ body {
 }
 
 
-#search-box .results li {
+.results li {
   /*border: 1px solid red;*/
   margin-bottom: 10px;
 }
 
-#search-box .results li:last-child {
+.results li:last-child {
   margin-bottom: 0px;
+}
+
+.results li:hover .box{
+  color: white;
+  background-color: #007194;
+  cursor: pointer;
 }
 
 

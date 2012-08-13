@@ -1,49 +1,48 @@
-<div id="wrapper" class="performance-new">
-
-  <div class="column-left">
-    <div class="poster box">
-      <h1>Poster</h1>
-      <div id="poster-drop" class="box dark">
-        Drop an image file here
-      </div>
+<div class="column-left">
+  <div class="poster box">
+    <h1>Poster</h1>
+    <div id="poster-drop" class="box dark">
+      Drop an image file here
     </div>
   </div>
+</div>
 
-  <div class="column-center" id="performance-form">
-    <%= form_for @performance do |f| %>
-      <%= f.error_messages %>
+<div class="column-center" id="performance-form">
+  <%= form_for @performance do |f| %>
+    <%= f.error_messages %>
 
-      <div class="box inline-form">
-        <p>
-          <%= f.label :title %>
-          <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
-          <div id="performance-title-results" class="framed-box"></div>
-        </p>
-        <p>
-          <%= f.label :year %>
-          <%= f.number_field :year, :id => "performance-year", :class => "input-box", :style => "padding-right: 5px", :maxlength => "4", :size => "4" %>
-        </p>
-        <p>
-          <%= f.label :director %>
-          <%= f.text_field :director, :id => "performance-director", :id => "performance-director", :class => "input-box", :style => "width: 210px" %>
-        </p>
-        <p>
-          <%= f.label :duration %>
-          <%= f.number_field :duration, :id => "performance-duration", :class => "input-box", :style => "padding-right: 5px", :maxlength => "3", :size => "3" %>
-        </p>
-      </div>
+    <div class="box inline-form">
+      <p>
+        <%= f.label :title %>
+        <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
+        <div id="performance-title-results" class="framed-box"></div>
+      </p>
+      <p>
+        <%= f.label :year %>
+        <%= f.number_field :year, :id => "performance-year", :class => "input-box", :style => "padding-right: 5px", :maxlength => "4", :size => "4" %>
+      </p>
+      <p>
+        <%= f.label :director %>
+        <%= f.text_field :director, :id => "performance-director", :id => "performance-director", :class => "input-box", :style => "width: 210px" %>
+      </p>
+      <p>
+        <%= f.label :duration %>
+        <%= f.number_field :duration, :id => "performance-duration", :class => "input-box", :style => "padding-right: 5px", :maxlength => "3", :size => "3" %>
+      </p>
+    </div>
 
-      <div class="box">
-        <p>
-          <%= f.label :synopsis %> <br />
-          <%= f.text_area :synopsis, :id => "performance-synopsis", :class => "textarea-box" %>
-        </p>
-      </div>
+    <div class="box">
+      <p>
+        <%= f.label :synopsis %> <br />
+        <%= f.text_area :synopsis, :id => "performance-synopsis", :class => "textarea-box" %>
+      </p>
+    </div>
 
-      <p><%= f.submit %></p>
+    <div id="controls">
+      <%= f.submit "send data", :class => "button" %>
+    </div>
 
-    <% end %>
-  </div>
+  <% end %>
 </div>
 
 <script type="text/template" id="template-result">
@@ -75,5 +74,5 @@ $(function(){
       if( collection.length > 0 ) $("#performance-title-results").slideDown( "slow" );
     },
   });
-})
+});
 </script>
