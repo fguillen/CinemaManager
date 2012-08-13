@@ -46,3 +46,13 @@
 #performance-title-results {
   display: none;
 }
+
+#performance-title-results li:hover .box{
+  color: white;
+  background-color: #007194;
+  cursor: pointer;
+}
+
+.result .director {
+  font-style: italic
+}

@@ -160,13 +160,16 @@ body {
 .input-box,
 .textarea-box {
   width: 50px;
-  text-align: right;
   font-family: "Haettenschweiler";
   font-size: 20px;
   background-color: white;
   color: #007194;
   padding: 3px;
   border: 0;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .textarea-box {

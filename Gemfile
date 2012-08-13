@@ -22,3 +22,4 @@ end
 
 
 gem "meta_search"
+gem "ruby-tmdb"

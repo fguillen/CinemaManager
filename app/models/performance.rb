@@ -7,7 +7,8 @@ class Performance < ActiveRecord::Base
     :title_original,
     :year,
     :duration,
-    :card
+    :card,
+    :director
   )
 
   has_many :showings
@@ -18,6 +19,7 @@ class Performance < ActiveRecord::Base
       title:            title,
       synopsis:         synopsis,
       title_original:   title_original,
+      director:         director,
       year:             year,
       duration:         duration,
       card:             card
