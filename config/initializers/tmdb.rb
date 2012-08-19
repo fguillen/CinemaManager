@@ -1,2 +1,2 @@
-Tmdb.api_key = "t478f8de5776c799de5a"
+Tmdb.api_key = "fcbf7415c2bec9ad03925f11be6e85fd"
 Tmdb.default_language = "en"

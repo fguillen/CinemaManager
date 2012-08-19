@@ -1,0 +1,1 @@
+* Use V3 ruby gem: https://github.com/Irio/ruby-tmdb
