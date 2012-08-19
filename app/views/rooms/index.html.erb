@@ -7,5 +7,10 @@
   </div>
 
   <div id="rooms-index">
+    <ul>
+      <% @rooms.each do |room| %>
+        <li><%= link_to room.name, edit_room_url( room ) %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'wpzoom';
-	src: url('fonts/wpzoom.eot');
-	src: url('fonts/wpzoom.eot?#iefix') format('embedded-opentype'),
-		url('fonts/wpzoom.svg#wpzoom') format('svg'),
-		url('fonts/wpzoom.woff') format('woff'),
-		url('fonts/wpzoom.ttf') format('truetype');
+	src: url('wpzoom.eot');
+	src: url('wpzoom.eot?#iefix') format('embedded-opentype'),
+		url('wpzoom.svg#wpzoom') format('svg'),
+		url('wpzoom.woff') format('woff'),
+		url('wpzoom.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

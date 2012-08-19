@@ -20,8 +20,18 @@
 }
 
 #room-map .room-seat {
+  cursor: pointer;
   width: 25px;
   height: 25px;
   border: 1px solid #94D7F1;
   float: left;
 }
+
+#room-map .room-seat.selected span {
+  font-family: 'wpzoom';
+  font-style: normal;
+  color: black;
+  font-size: 22px;
+  padding: 2px;
+}
+

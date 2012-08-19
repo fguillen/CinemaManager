@@ -3,4 +3,3 @@
 //= require app/rooms/CellView.js
 //= require app/rooms/CellsView.js
 //= require app/rooms/FormView.js
-//= require app/rooms/FormInit.js

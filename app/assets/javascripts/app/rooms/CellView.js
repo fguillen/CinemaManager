@@ -3,7 +3,7 @@ $(function(){
     tagName: "div",
 
     attributes: {
-      class: "room-seat unselected"
+      class: "room-seat"
     },
 
     template: _.template( $("#template-room-cell").html() ),
@@ -21,13 +21,17 @@ $(function(){
     },
 
     render: function(){
-      console.log( "XXX: CellView.render", this.model.id );
-
       var content = "";
 
       if( this.model.get( "selected" ) ) content = this.template( this.model.toJSON() );
 
       this.$el.html( content );
+
+      if( this.model.get( "selected" ) ){
+        this.$el.addClass( "selected" );
+      } else {
+        this.$el.removeClass( "selected" );
+      }
 
       return this;
     }

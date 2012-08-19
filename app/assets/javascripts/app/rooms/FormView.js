@@ -11,7 +11,18 @@ $(function(){
       this.cellsView = new App.Rooms.CellsView({ collection: this.cells, cols: this.cols });
 
       this.render();
+    },
 
+    updateCellsCollection: function( data ){
+      _.each( data.seats, function( coordinates ){
+        var index = ((coordinates.row - 1) * this.cols) + (coordinates.col - 1);
+        var cell = this.cells.at( index );
+
+        console.log( "XXX: row, col", coordinates.row, coordinates.col );
+        console.log( "XXX: index, cell", index, cell );
+
+        cell.set( "selected", true );
+      }, this);
     },
 
     createCellsCollection: function(){
