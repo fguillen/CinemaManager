@@ -39,3 +39,9 @@
   <% end %>
 </div>
 
+<script type="text/template" id="template-room-cell">
+  <div style="display:none">
+    <input type="hidden" name="room[seats_attributes][{{ id }}][row]" value="{{ row }}" />
+    <input type="hidden" name="room[seats_attributes][{{ id }}][col]" value="{{ col }}" />
+  </div>
+</script>

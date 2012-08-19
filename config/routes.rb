@@ -5,6 +5,8 @@ CinemaManager::Application.routes.draw do
     end
   end
 
+  resources :rooms, :except => [:show]
+
   match '/calendar/day/:date' => 'calendars#day', :as => :calendar_day
   match '/calendar/month/:date' => 'calendars#month', :as => :calendar_month
 
