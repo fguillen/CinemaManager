@@ -1,0 +1,157 @@
+<% javascript 'calendar_day' %>
+
+<div id="wrapper" class="week">
+  <div id="search-box">
+    <div class="header box">
+      <h1 class="title-1">Search</h1>
+      <input id="performances-query" class="input-box big" type="text" placeholder="movie title" />
+    </div>
+
+    <div class="results framed-box">
+      <ul>
+      </ul>
+    </div>
+  </div> <!-- search-box -->
+
+  <div id="panel">
+    <div id="navigation" class="header">
+      <div class="date">
+        <a class="day-less"><span class="iconic arrow_left"></span></a>
+        <span class="date-formatted">### date ###</span>
+        <a class="day-more"><span class="iconic arrow_right"></span></a>
+      </div>
+      <div class="controls">
+        <a href="./schedule_month.html" class="month-view"> month view <span class="iconic fullscreen_exit"></span></a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="ruler-left" class="ruler font-narrow">
+        <ul class="time-ruler">
+        </ul>
+      </div>
+
+      <div id="schedules">
+        <% Room.all.each do |room| %>
+          <div class="schedule" id="schedule-room-<%= room.id %>" data-room-id="<%= room.id %>" data-room-name="<%= room.name %>">
+            <h1 class="title-1">
+              Room 1
+            </h1>
+
+            <div class="schedule-rail framed-box">
+              <div class="schedule-grid">
+                <ul>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+
+        <div id="showings-store"></div>
+      </div>
+
+      <div id="ruler-right" class="ruler font-narrow">
+        <ul class="time-ruler">
+        </ul>
+      </div>
+    </div>
+  </div><!-- panel -->
+
+  <div id="selected-box">
+    <div class="header box">
+      <h1 class="title-1">Selected Movie</h1>
+    </div>
+
+    <div class="info framed-box">
+    </div>
+  </div> <!-- selected-box -->
+
+
+</div>
+
+<script>
+
+  function drawRulers( date ){
+    console.log( "drawRulers.date", date );
+
+    var timeIni = "17:00";
+    var timeEnd = "03:00";
+    var timeActual = timeIni;
+
+    while( timeActual >= timeIni || timeActual <= timeEnd ){
+      var dateObj = new Date( Date.parse( date + " " + timeActual,"MM/dd/yyyy HH:MM" ) );
+
+      // Ruler li
+      var newRulerLi = $("<li><span>" + timeActual + "</span></li>")
+      if( dateObj.getMinutes() == 0 ) newRulerLi.addClass( "visible" );
+      $("ul.time-ruler").append( newRulerLi );
+
+      // Grid elements
+      var newGridElement = $( "<li data-time=\"" + timeActual + "\" data-date=\"" + date + "\"></li>" );
+      $(".schedule-grid ul").append( newGridElement );
+
+
+      var newDateObj  = new Date( dateObj.getTime() + 10 * 60000 );
+      timeActual      = sprintf( "%02d:%02d", newDateObj.getHours(), newDateObj.getMinutes() );
+    }
+  }
+
+
+
+
+  $(function() {
+
+
+
+    $('.schedule-grid li').droppable({
+      tolerance: 'fit'
+    });
+
+  });
+
+</script>
+
+
+<script type="text/template" id="template-card">
+  <div class="card box in-rail" id="card-{{ id }}" data-room-id="{{ room.id }}" data-room-name="{{ room.name }}" data-duration="{{ performance.duration}}">
+    <div class="times font-narrow">
+      <div class="time time-ini">{{ time_ini }}</div>
+      <div class="time time-end">{{ time_end }}</div>
+    </div>
+
+    <h2 class="title-2">{{ performance.title }}</h2>
+  </div>
+</script>
+
+<script type="text/template" id="template-search-result">
+  <div class="box" id="card-search-{{ id }}">
+    <h2 class="title-2">{{ title }}</h2>
+  </div>
+</script>
+
+<script type="text/template" id="template-selected-info">
+  <div class="box" id="card-{{ id }}" data-room-id="{{ room.id }}" data-room-name="{{ room.name }}">
+    <h2 class="title-2">{{ performance.title }}</h2>
+  </div>
+
+  <div id="fare" class="box">
+    <span class="font-narrow">Price</span>
+    <input class="input-box text-right" type="text" value="{{ price }}" /> €
+  </div>
+
+  <div id="session" class="box">
+    <h1 class="title-1">Room {{ room.name }}</h1>
+    <div id="schedule">
+      <div id="minutes" class="font-narrow">+{{ performance.duration }} min</div>
+      <div id="times">
+        <input class="input-box text-right" type="text" value="{{ time_ini }}" />
+        <input class="input-box text-right" type="text" value="{{ time_end }}" />
+      </div>
+    </div>
+  </div> <!-- session -->
+
+  <div id="buttons">
+    <a href="#remove" class="remove button"><span class="iconic x_alt"></span> remove</a>
+  </div>
+</script>

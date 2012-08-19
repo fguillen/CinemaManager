@@ -1,0 +1,15 @@
+<% title "New Room" %>
+<% stylesheet "style_rooms" %>
+<% javascript 'room_form' %>
+
+<div id="wrapper" class="room-new">
+  <%= render "form" %>
+</div>
+
+
+
+<script>
+  $(function(){
+    var roomFormView = new App.Rooms.FormView({ el: $("#room-form") });
+  });
+</script>

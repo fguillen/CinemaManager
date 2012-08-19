@@ -1,0 +1,16 @@
+<% title "Rooms" %>
+<% stylesheet "style_rooms" %>
+
+<div id="wrapper" class="room-index">
+  <div id="controls">
+    <%= link_to "create new room", new_admin_room_path, :class => "button" %>
+  </div>
+
+  <div id="rooms-index">
+    <ul>
+      <% @rooms.each do |room| %>
+        <li><%= link_to room.name, edit_admin_room_url( room ) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

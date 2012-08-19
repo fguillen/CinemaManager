@@ -1,0 +1,78 @@
+<div class="column-left">
+  <div class="poster box">
+    <h1>Poster</h1>
+    <div id="poster-drop" class="box dark">
+      Drop an image file here
+    </div>
+  </div>
+</div>
+
+<div class="column-center" id="performance-form">
+  <%= form_for [:admin, @performance] do |f| %>
+    <%= f.error_messages %>
+
+    <div class="box inline-form">
+      <p>
+        <%= f.label :title %>
+        <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
+        <div id="performance-title-results" class="framed-box"></div>
+      </p>
+      <p>
+        <%= f.label :year %>
+        <%= f.number_field :year, :id => "performance-year", :class => "input-box", :style => "padding-right: 5px", :maxlength => "4", :size => "4" %>
+      </p>
+      <p>
+        <%= f.label :director %>
+        <%= f.text_field :director, :id => "performance-director", :id => "performance-director", :class => "input-box", :style => "width: 210px" %>
+      </p>
+      <p>
+        <%= f.label :duration %>
+        <%= f.number_field :duration, :id => "performance-duration", :class => "input-box", :style => "padding-right: 5px", :maxlength => "3", :size => "3" %>
+      </p>
+    </div>
+
+    <div class="box">
+      <p>
+        <%= f.label :synopsis %> <br />
+        <%= f.text_area :synopsis, :id => "performance-synopsis", :class => "textarea-box" %>
+      </p>
+    </div>
+
+    <div id="controls">
+      <%= f.submit "send data", :class => "button" %>
+    </div>
+
+  <% end %>
+</div>
+
+<script type="text/template" id="template-result">
+  <div class="result box">
+    <span class="title">{{ title }}</span>
+    <span class="year font-narrow">[{{ year }}]</span>
+    <span class="director font-narrow">{{ director }}</span>
+  </div>
+</script>
+
+<script>
+$(function(){
+  new BBSearch({
+    url: "<%= api_external_dbs_performances_url %>?q=",
+    inputElement: $("#performance-title"),
+    resultsElement: $("#performance-title-results"),
+    itemTemplate: $("#template-result").html(),
+    onClick: function( model ){
+      $("#performance-title").val( model.get( "title" ) );
+      $("#performance-year").val( model.get( "year" ) );
+      $("#performance-director").val( model.get( "director" ) );
+      $("#performance-duration").val( model.get( "duration" ) );
+      $("#performance-synopsis").html( model.get( "synopsis" ) );
+    },
+    onStart: function(){
+      $("#performance-title-results").slideUp( "fast" );
+    },
+    onEnd: function( collection ){
+      if( collection.length > 0 ) $("#performance-title-results").slideDown( "slow" );
+    },
+  });
+});
+</script>
