@@ -87,7 +87,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
-    ruby-tmdb (0.2.1)
+    ruby-tmdb3 (0.3.1)
       addressable
       deepopenstruct (>= 0.1.2)
       json
@@ -114,5 +114,5 @@ DEPENDENCIES
   mocha
   nifty-generators
   rails (= 3.2.6)
-  ruby-tmdb
+  ruby-tmdb3
   sqlite3

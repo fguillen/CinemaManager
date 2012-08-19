@@ -2,17 +2,12 @@ puts "XXX: loading external_dbs::performance"
 
 class ExternalDbs::Performance
   def self.search( query )
-    # performances = TmdbMovie.find( :title => "query" )
-    # puts "XXX: performances: #{performances}"
+    results = TmdbMovie.find( :title => query, :expand_results => false, :limit => 10 )
 
-
-    5.times.map do |index|
+    results.map do |result|
       Performance.new({
-        title: "Performance #{index}",
-        director: "Director #{index}",
-        year: 2010,
-        duration: 180,
-        synopsis: "This is the synopsis"
+        title: result.title,
+        year: result.release_date.split("-").first
       })
     end
   end

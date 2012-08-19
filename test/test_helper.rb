@@ -10,4 +10,8 @@ class ActiveSupport::TestCase
   def fixture( file_name )
     File.expand_path "#{FIXTURES_PATH}/#{file_name}"
   end
+
+  def read_fixture( file_name )
+    File.read( fixture( file_name ) )
+  end
 end
