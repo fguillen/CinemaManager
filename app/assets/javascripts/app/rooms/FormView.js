@@ -1,23 +1,49 @@
 $(function(){
   App.Rooms.FormView = Backbone.View.extend({
+    events: {
+      "change .room-dimension": "updateDimensions"
+    },
 
     initialize: function(){
-      this.rows = parseInt( this.$el.find( "#room-rows" ).val() );
-      this.cols = parseInt( this.$el.find( "#room-cols" ).val() );
-      this.cellsNum = this.rows * this.cols;
-      this.cells = this.createCellsCollection();
-      this.cells.rows = this.rows;
+      var rows = parseInt( this.$el.find( "#room-rows" ).val() );
+      var cols = parseInt( this.$el.find( "#room-cols" ).val() );
 
-      this.cellsView = new App.Rooms.CellsView({ collection: this.cells, cols: this.cols });
+      this.cells = this.createCellsCollection( rows, cols );
+
+      this.cellsView = new App.Rooms.CellsView({ collection: this.cells });
+
+      this.render();
+    },
+
+    updateDimensions: function(){
+      var newRows = parseInt( this.$el.find( "#room-rows" ).val() );
+      var newCols = parseInt( this.$el.find( "#room-cols" ).val() );
+
+      if( newRows < this.cells.rows ){
+        this.cells.removeRows( this.cells.rows - newRows );
+      }
+
+      if( newRows > this.cells.rows ){
+        this.cells.addRows( newRows - this.cells.rows );
+      }
+
+      if( newCols < this.cells.cols ){
+        this.cells.removeCols( this.cells.cols - newCols );
+      }
+
+      if( newCols > this.cells.cols ){
+        this.cells.addCols( newCols - this.cells.cols );
+      }
 
       this.render();
     },
 
     updateCellsCollection: function( data ){
       _.each( data.seats, function( coordinates ){
-        var index = ((coordinates.row - 1) * this.cols) + (coordinates.col - 1);
+        var index = ((coordinates.row - 1) * this.cells.cols) + (coordinates.col - 1);
         var cell = this.cells.at( index );
 
+        console.log( "XXX: cells", this.cells );
         console.log( "XXX: row, col", coordinates.row, coordinates.col );
         console.log( "XXX: index, cell", index, cell );
 
@@ -25,22 +51,25 @@ $(function(){
       }, this);
     },
 
-    createCellsCollection: function(){
+    createCellsCollection: function( rows, cols ){
       var cells = new App.Rooms.Cells();
 
-      for( var row = 1; row <= this.rows; row ++ ){
-        for( var col = 1; col <= this.cols; col ++ ){
+      for( var row = 1; row <= rows; row ++ ){
+        for( var col = 1; col <= cols; col ++ ){
           var cell = new App.Rooms.Cell({ row: row, col: col });
           cells.add( cell );
         }
       }
+
+      cells.rows = rows;
+      cells.cols = cols;
 
       return cells;
     },
 
     render: function(){
       this.$el.find( "#room-map .room-seats" ).html( this.cellsView.render().el );
-      this.$el.find( "#room-map" ).css({ "width": this.cols * 27 });
+      this.$el.find( "#room-map" ).css({ "width": this.cells.cols * 27 });
     }
 
   });

@@ -22,6 +22,8 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
+    @room.seats.destroy_all
+
     if @room.update_attributes(params[:room])
       redirect_to edit_room_url( @room ), :notice  => "Successfully updated room."
     else
