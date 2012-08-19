@@ -10,8 +10,6 @@ $(function(){
 
       this.cells = this.createCellsCollection( rows, cols );
 
-      this.cellsView = new App.Rooms.CellsView({ collection: this.cells });
-
       this.render();
     },
 
@@ -68,7 +66,9 @@ $(function(){
     },
 
     render: function(){
-      this.$el.find( "#room-map .room-seats" ).html( this.cellsView.render().el );
+      console.log( "XXX: FormView.render" );
+      var cellsView = new App.Rooms.CellsView({ collection: this.cells });
+      this.$el.find( "#room-map .room-seats" ).html( cellsView.render().el );
       this.$el.find( "#room-map" ).css({ "width": this.cells.cols * 27 });
     }
 
