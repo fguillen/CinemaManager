@@ -9,7 +9,10 @@
   <div id="rooms-index">
     <ul>
       <% @rooms.each do |room| %>
-        <li><%= link_to room.name, edit_admin_room_url( room ) %></li>
+        <li>
+          <%= link_to room.name, edit_admin_room_url( room ) %>
+          <%= link_to "x", admin_room_url( room ), :method => :delete %>
+        </li>
       <% end %>
     </ul>
   </div>

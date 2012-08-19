@@ -21,7 +21,7 @@ $(function(){
 
       this.options.showings.each( function( showing ){
         var boxView = new App.Calendar.Month.ShowingView({ model: showing });
-        var selector = ".rail[data-room-name='" + showing.get( "room" ).name + "']";
+        var selector = ".rail[data-room-id='" + showing.get( "room" ).id + "']";
         console.log( "DayView.render.selector", selector );
         this.$el.find( selector ).append( boxView.render().el );
       }, this);

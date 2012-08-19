@@ -5,8 +5,8 @@ $(function(){
   App.Router = Backbone.Router.extend({
 
     routes: {
-      "calendar/day/:date":     "calendarDay",
-      "calendar/month/:date":   "calendarMonth"
+      "admin/calendar/day/:date":     "calendarDay",
+      "admin/calendar/month/:date":   "calendarMonth"
     },
 
     initDayPage: function( date ){

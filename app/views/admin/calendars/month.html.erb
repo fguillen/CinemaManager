@@ -43,14 +43,13 @@
 <script type="text/template" id="template-day">
   <div class="header box">
     <div class="number">{{ day }}</div>
-    <div class="icon"><a href="/calendar/day/{{ date }}"><span class="iconic fullscreen"></span></a></div>
+    <div class="icon"><a href="/admin/calendar/day/{{ date }}"><span class="iconic fullscreen"></span></a></div>
   </div>
   <div class="rails framed-box">
     <ul>
-      <li class="rail" data-room-name="1"></li>
-      <li class="rail" data-room-name="2"></li>
-      <li class="rail" data-room-name="3"></li>
-      <li class="rail" data-room-name="4"></li>
+      <% Room.all.each do |room| %>
+        <li class="rail" data-room-id="<%= room.id %>"></li>
+      <% end %>
     </ul>
   </div>
 </script>
