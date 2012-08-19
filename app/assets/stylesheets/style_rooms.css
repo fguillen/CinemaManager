@@ -15,6 +15,10 @@
   margin-bottom: 30px;
 }
 
+#room-map .room-seats-row {
+  overflow: hidden;
+}
+
 #room-map .room-seat {
   width: 25px;
   height: 25px;

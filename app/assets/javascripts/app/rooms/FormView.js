@@ -6,6 +6,7 @@ $(function(){
       this.cols = parseInt( this.$el.find( "#room-cols" ).val() );
       this.cellsNum = this.rows * this.cols;
       this.cells = this.createCellsCollection();
+      this.cells.rows = this.rows;
 
       this.cellsView = new App.Rooms.CellsView({ collection: this.cells, cols: this.cols });
 
@@ -28,6 +29,7 @@ $(function(){
 
     render: function(){
       this.$el.find( "#room-map .room-seats" ).html( this.cellsView.render().el );
+      this.$el.find( "#room-map" ).css({ "width": this.cols * 27 });
     }
 
   });
