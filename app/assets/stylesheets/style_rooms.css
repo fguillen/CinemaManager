@@ -35,3 +35,9 @@
   padding: 2px;
 }
 
+#room-form .box {
+  width: 210px;
+overflow: hidden;
+margin-bottom: 10px;
+}
+

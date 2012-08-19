@@ -300,6 +300,16 @@ body {
   width: 100px;
 }
 
+.inline-form label,
+.inline-form input{
+  float: left;
+}
+
+.inline-form label {
+  clear: left;
+  width: 70px;
+}
+
 /*.............................................................loading................... */
 #loading {
   border-bottom-right-radius: 10px;

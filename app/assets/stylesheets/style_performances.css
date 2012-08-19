@@ -17,16 +17,6 @@
   height: 182px;
 }
 
-.inline-form label,
-.inline-form input{
-  float: left;
-}
-
-.inline-form label {
-  clear: left;
-  width: 70px;
-}
-
 #performance-form .box {
   overflow: hidden;
   margin-bottom: 10px;
