@@ -8,7 +8,8 @@ class Performance < ActiveRecord::Base
     :year,
     :duration,
     :card,
-    :director
+    :director,
+    :tmdb_id
   )
 
   has_many :showings
@@ -22,7 +23,8 @@ class Performance < ActiveRecord::Base
       director:         director,
       year:             year,
       duration:         duration,
-      card:             card
+      card:             card,
+      tmdb_id:          tmdb_id
     }
   end
 end

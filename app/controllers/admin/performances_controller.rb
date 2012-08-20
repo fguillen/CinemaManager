@@ -7,7 +7,12 @@ class Admin::PerformancesController < ApplicationController
   end
 
   def create
-    @performance = Performance.new(params[:performance])
+    if( params[:performance][:tmdb_id] )
+      @performance = ::ExternalDbs::Performance.info( params[:performance][:tmdb_id] )
+    else
+      @performance = Performance.new( params[:performance] )
+    end
+
     if @performance.save
       redirect_to edit_admin_performance_url( @performance ), :notice => "Successfully created performance."
     else

@@ -1,0 +1,62 @@
+<div class="column-center" id="performance-form">
+  <%= form_for [:admin, @performance] do |f| %>
+    <%= f.error_messages %>
+
+    <div class="box inline-form">
+      <p>
+        <%= f.label :title %>
+        <%= f.text_field :title, :id => "performance-title", :class => "input-box", :style => "width: 378px" %>
+        <div id="performance-title-results" class="framed-box"></div>
+      </p>
+      <p>
+        <%= f.label :year %>
+        <%= f.number_field :year, :id => "performance-year", :class => "input-box", :style => "padding-right: 5px", :maxlength => "4", :size => "4" %>
+      </p>
+
+      <p>
+        <%= f.label :tmdb_id %>
+        <%= f.number_field :tmdb_id, :id => "performance-tmdb_id", :class => "input-box", :style => "padding-right: 5px" %>
+      </p>
+    </div>
+
+    <div id="controls">
+      <%= f.submit "create performance", :class => "button" %>
+    </div>
+
+  <% end %>
+</div>
+
+<script type="text/template" id="template-result">
+  <div class="result box">
+    <span class="title">{{ title }}</span>
+    <span class="year font-narrow">[{{ year }}]</span>
+    <span class="director font-narrow">{{ director }}</span>
+  </div>
+</script>
+
+<script>
+$(function(){
+  new BBSearch({
+    url: "<%= api_external_dbs_performances_url %>?q=",
+    inputElement: $("#performance-title"),
+    resultsElement: $("#performance-title-results"),
+    itemTemplate: $("#template-result").html(),
+    onClick: function( model ){
+      $("#performance-title").val( model.get( "title" ) );
+      $("#performance-year").val( model.get( "year" ) );
+
+      console.log( "model", model );
+
+      $("#performance-tmdb_id").val( model.get( "tmdb_id" ) );
+      $("#performance-title-results").slideUp( "fast" );
+    },
+    onStart: function(){
+      $("#performance-tmdb_id").val( "" );
+      $("#performance-title-results").slideUp( "fast" );
+    },
+    onEnd: function( collection ){
+      if( collection.length > 0 ) $("#performance-title-results").slideDown( "slow" );
+    },
+  });
+});
+</script>
