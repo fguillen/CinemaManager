@@ -1,3 +1,4 @@
+config/tmdb_api_key.txt
 *.rbc
 *.sassc
 .sass-cache

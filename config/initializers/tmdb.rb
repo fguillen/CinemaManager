@@ -1,2 +1,2 @@
-Tmdb.api_key = "fcbf7415c2bec9ad03925f11be6e85fd"
+Tmdb.api_key = File.read( "#{Rails.root}/config/tmdb_api_key.txt" )
 Tmdb.default_language = "en"

@@ -1,3 +1,5 @@
+<% javascript 'jquery_file_upload' %>
+
 <div class="column-left">
   <div class="poster box">
     <h1>Poster</h1>
@@ -5,6 +7,8 @@
       Drop an image file here
     </div>
   </div>
+
+  <div id="fileupload">Fileupload</div>
 </div>
 
 <div class="column-center" id="performance-form">
@@ -43,3 +47,17 @@
 
   <% end %>
 </div>
+
+
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
+});
+</script>
